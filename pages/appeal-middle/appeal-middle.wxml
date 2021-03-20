@@ -1,0 +1,17 @@
+<import src='../../templates/empty/empty.wxml' />
+
+<view class="panel" wx:if="{{list.length}}">
+    <list-cell
+        wx:for="{{list}}"
+        wx:key="index"
+        name="{{item.entname}}"
+        time="{{item.applytime}}"
+        status="去申诉"
+        data-item="{{item}}"
+        bind:tap="handleAppeal"
+    />
+</view>
+
+<template is="empty" wx:else data="{{emptyTip: '暂无可申诉的申报项'}}"></template>
+
+

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "info-item": "/components/info-item/info-item",
+    "van-icon": "/components/vant/icon/index"
+  },
+  "navigationBarTitleText": "申报详情"
+}

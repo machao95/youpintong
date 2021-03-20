@@ -1,0 +1,11 @@
+
+<view class="list-cell row-between">
+    <view class="left column">
+        <text class="name">{{name}}</text>
+        <text class="time">{{time}}</text>
+    </view>
+    <view class="right row">
+        <text class="value">{{status}}</text>
+        <van-icon class="icon" name="arrow" color="#696969"></van-icon>
+    </view>
+</view>

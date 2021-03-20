@@ -1,0 +1,36 @@
+.address-box {
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.address-image {
+  height: 6px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAGCAYAAABZ2GkAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA61pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wUmlnaHRzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvcmlnaHRzLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcFJpZ2h0czpNYXJrZWQ9IkZhbHNlIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6OEIxOTEwNEE2OUQzRTIxMThEMUZCN0IyNzIwMEYwN0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjU4RDcxMEI0NDhFMTFFNTlCQkM5Q0FDMTZFQjg5NTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjU4RDcxMEE0NDhFMTFFNTlCQkM5Q0FDMTZFQjg5NTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTMyBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InV1aWQ6Qjc5RkIxNzQ1NjM3RTUxMTlEMzFDMjM3NTI4MkMzNjQiIHN0UmVmOmRvY3VtZW50SUQ9InV1aWQ6MzU4NEQ3MzQ1MDM3RTUxMTlEMzFDMjM3NTI4MkMzNjQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6UsH9xAAAA40lEQVR42mL8//8/wyigPmAB4v9NDz4y7H//Y0AcUKfAz+AoyEG0+o/TpzP8OHlyQNzKn5nJwGFuTpRaJhCRI83LwMvMNCCOnfTkM8Pnv/+IVs8bFcXAxM09IG79vGQJw7+vX4kPWCFWJoYMaZ4BceyHP/8YpgADl1jAxM/PwBMePiBu/fcZmAiWLiU+YEHAS5iTQZ+HbUAcvOvdD4Yzn38RrZ7Tzo6BTUNjQNz649gxhl9XrxIfsCBQKsfHwMLIOCAO7nv0ieH7P+IrUr7ERAZGFpYBceunBQsY/v/AXycBBBgAcvA/9YgPUCsAAAAASUVORK5CYII=);
+}
+.address-car {
+  width: 40rpx;
+  height: 36rpx;
+  padding-right: 20rpx;
+}
+.address-content {
+  padding: 40rpx 20rpx;
+  color: #333;
+}
+.address-car image {
+  width: 100%;
+  height: 100%;
+}
+.address-center {
+  flex: 1;
+  line-height: 50rpx;
+}
+.address-title {
+  font-weight: bold;
+  font-size: var(--fontSize-lg);
+}
+.address-detail {
+  font-size: var(--fontSize-normal);
+}
+.address-action {
+  padding-left: 20rpx;
+}

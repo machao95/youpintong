@@ -1,0 +1,70 @@
+
+<view class="header row">
+    <view class="portrait-box">
+        <image class="portrait" src="{{$.userInfo.avatarUrl || '/assets/tab/mine.png'}}"></image>
+    </view>
+    <view class="nickname ellipsis column">{{$.userInfo.nickName || '请先登录'}}</view>
+</view>
+
+<view class="main">
+
+    <view class="login-box" wx:if="{{!$.token}}">
+        <image class="account-image" src="/assets/images/account.png"></image>
+        <view class="login-tip">请点击下方按钮进行登录</view>
+        <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleLogin" class="login-btn">登录</button>
+    </view>
+
+   <block wx:else>
+
+       <view class="menu-box">
+
+           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="validate" bind:tap="handleNavigate">
+               <view class="cell-image">
+                   <image src="/assets/images/validate.png"></image>
+               </view>
+               <view class="cell-text">绑定手机号</view>
+               <block>
+                   <text class="cell-value" wx:if="{{userInfo.bindStatus}}">{{userInfo.mobile}}</text>
+                   <van-icon class="cell-icon" name="arrow"></van-icon>
+               </block>
+           </view>
+
+           <view class="divider"></view>
+
+           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="apply" bind:tap="handleNavigate">
+               <view class="cell-image">
+                   <image src="/assets/images/apply.png"></image>
+               </view>
+               <view class="cell-text">我的申报</view>
+               <van-icon class="cell-icon" name="arrow"></van-icon>
+           </view>
+
+           <view class="divider"></view>
+
+           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="appeal" bind:tap="handleNavigate">
+               <view class="cell-image">
+                   <image src="/assets/images/appeal.png"></image>
+               </view>
+               <view class="cell-text">我的申诉</view>
+               <van-icon class="cell-icon" name="arrow"></van-icon>
+           </view>
+
+<!--           <view class="divider"></view>-->
+
+<!--           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="vote" bind:tap="handleNavigate">-->
+<!--               <view class="cell-image">-->
+<!--                   <image src="/assets/images/vote.png"></image>-->
+<!--               </view>-->
+<!--               <view class="cell-text">投票结果查看</view>-->
+<!--               <van-icon class="cell-icon" name="arrow"></van-icon>-->
+<!--           </view>-->
+
+       </view>
+
+       <view class="out-box">
+           <button bind:tap="handleLogout">退出登录</button>
+       </view>
+
+   </block>
+
+</view>

@@ -1,0 +1,14 @@
+
+.page-vote {
+  padding: 40rpx 30rpx;
+}
+.big-title {
+  font-weight: bold;
+  font-size: 40rpx;
+  padding: 15rpx 0;
+  margin-bottom: 10rpx;
+}
+
+.vote-box {
+
+}

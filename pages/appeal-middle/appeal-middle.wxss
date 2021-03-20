@@ -1,0 +1,4 @@
+@import '../../templates/empty/empty.wxss';
+.panel {
+  padding: 40rpx
+}

@@ -1,0 +1,6 @@
+<template name="empty">
+  <view class="empty-container column-center">
+    <image class="empty-img" src="/assets/images/empty.png"></image>
+    <text class="empty-text">{{emptyTip}}</text>
+  </view>
+</template>

@@ -1,0 +1,63 @@
+<view class="header">
+    <image style="width: 100%; height: 300rpx" src="/assets/images/index.png"></image>
+    <scroll-view
+        class="notice-box ellipsis"
+        scroll-y scroll-with-animation="{{scrollAnimate}}"
+        scroll-into-view="{{activeNotice}}"
+    >
+        <block wx:if="{{noticeList.length}}">
+            <view
+                wx:for="{{noticeList}}"
+                wx:key="index"
+                data-index="{{index}}"
+                bindtap="toNoticeDetail"
+                id="{{'notice-' + item.id}}"
+            >
+                <text class="notice-tag">消息通知</text>
+                <text>{{item.ftitle}}</text>
+            </view>
+        </block>
+        <view wx:else>
+            <text class="notice-tag">消息999</text>
+            暂无公告
+        </view>
+    </scroll-view>
+</view>
+
+<view class="main">
+
+    <view class="menu-item row" data-index="{{0}}" bind:tap="handleMenuClick">
+        <image class="menu-image" src="/assets/images/validate.png"></image>
+        <view class="menu-content column">
+            <view class="menu-title">您好，{{$.userInfo.nickName || '请先登录'}}</view>
+            <view class="menu-desc">
+                {{userInfo.bindStatus ? "您已通过手机验证" : "验证手机号之后才能进行操作"}}
+            </view>
+        </view>
+    </view>
+
+    <view class="menu-item row" data-index="{{1}}" bind:tap="handleMenuClick">
+        <image class="menu-image" src="/assets/images/apply.png"></image>
+        <view class="menu-content column">
+            <view class="menu-title">自主申报</view>
+            <view class="menu-desc">自主申报主体金额欠款自主申报主</view>
+        </view>
+    </view>
+
+    <view class="menu-item row" data-index="{{2}}" bind:tap="handleMenuClick">
+        <image class="menu-image" src="/assets/images/appeal.png"></image>
+        <view class="menu-content column">
+            <view class="menu-title">结果申诉</view>
+            <view class="menu-desc">自主申报主体金额欠款自主申报主体金额欠款</view>
+        </view>
+    </view>
+
+    <view class="menu-item row" data-index="{{3}}" bind:tap="handleMenuClick">
+        <image class="menu-image" src="/assets/images/vote.png"></image>
+        <view class="menu-content column">
+            <view class="menu-title">投票</view>
+            <view class="menu-desc">处理方式投票</view>
+        </view>
+    </view>
+
+</view>

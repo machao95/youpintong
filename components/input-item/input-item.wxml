@@ -1,0 +1,43 @@
+<view class="container column">
+
+    <view class="input-label">
+        <text wx:if="{{required}}" class="required">*</text>
+        {{label}}
+    </view>
+
+    <view class="input-content row-between">
+
+        <input
+                class="input"
+                wx:if="{{type === 'text' || type === 'number' || type === 'idcard' || type === 'digit'}}"
+                value="{{value}}"
+                type="{{type}}"
+                data-name="{{name}}"
+                placeholder="{{placeholder || '请输入'}}"
+                bindinput="handleChange"
+        />
+
+        <picker
+            class="input"
+            wx:if="{{type === 'selector'}}"
+            mode="selector"
+            value="{{value}}"
+            range="{{range}}"
+            data-name="{{name}}"
+            bindchange="handleChange"
+        >
+            <view wx:if="{{value}}">{{value}}</view>
+            <view wx:else class="placeholder">{{placeholder || '请选择'}}</view>
+        </picker>
+
+        <radio-group bindchange="handleChange" wx:if="{{type === 'radio'}}">
+            <radio color="#1890ff" class="radio" wx:for="{{items}}" wx:key="item" value="{{item}}" checked="{{item === value}}">
+                <text>{{item}}</text>
+            </radio>
+        </radio-group>
+
+        <slot></slot>
+
+    </view>
+
+</view>

@@ -1,0 +1,99 @@
+
+page {
+  background: var(--color-bg-gray);
+}
+.header {
+  overflow: hidden;
+  background: var(--color-primary);
+  padding: 20rpx 40rpx;
+}
+.portrait-box {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+.portrait {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+}
+.nickname {
+  margin-left: 20rpx;
+  flex: 1;
+  font-weight: bolder;
+  font-size: var(--fontSize-xxl);
+  color: #FFFFFF;
+}
+
+.main {
+  margin-top: 20rpx;
+}
+.login-box {
+  text-align: center;
+  padding: 40rpx;
+  background: #FFFFFF;
+}
+.account-image {
+  width: 150rpx;
+  height: 105rpx;
+}
+.login-tip {
+  margin: 20rpx;
+}
+.login-btn {
+  margin-top: 50rpx;
+  border-radius: 10rpx;
+  color: #FFFFFF;
+  background: var(--color-primary);
+}
+
+.menu-box {
+  background: #FFFFFF;
+}
+
+.cell-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 35rpx 40rpx;
+}
+.cell-image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.cell-image image {
+  width: 100%;
+  height: 100%
+}
+.cell-text {
+  padding-left: 10px;
+  font-size: var(--fontSize-normal);
+  flex: 1;
+}
+.cell-icon {
+  color: #999;
+  font-size: var(--fontSize-normal);
+}
+.cell-value {
+  color: #999;
+  padding-right: 10rpx;
+}
+.cell-hover {
+  background-color: #f1f1f1;
+}
+.divider {
+  margin-left: 18px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+
+.out-box {
+  margin-top: 20rpx;
+  padding: 0 40rpx;
+}
+.out-box button {
+  width: 100%;
+  background: #FFFFFF;
+}

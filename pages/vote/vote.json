@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-icon": "/components/vant/icon/index",
+    "question-item": "/components/question-item/question-item"
+  },
+  "navigationBarTitleText": "投票"
+}

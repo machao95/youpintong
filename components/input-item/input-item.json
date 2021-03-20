@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-button": "/components/vant/button/index",
+    "van-checkbox": "/components/vant/checkbox/index"
+  }
+}

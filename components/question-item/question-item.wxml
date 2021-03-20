@@ -1,0 +1,37 @@
+
+<view class="question-item">
+    <view class="question-title">{{index + 1}}: {{question.questiontitle}}</view>
+    <view class="question-content">
+
+        <radio-group wx:if="{{question.questiontype === '单选'}}" class="group" bindchange="radioChange">
+            <view class="row option-line" wx:for="{{question.options}}" wx:key="itemprefix">
+                <radio
+                    class="radio"
+                    color="#1890ff"
+                    value="{{item.itemcode}}"
+                    checked="{{item.itemcode == value}}"
+                />
+                <text data-itemcode="{{item.itemcode}}" bindtap="radioTextTap">{{item.itemprefix ? (item.itemprefix + '：') : ''}}{{item.itemtitle}}</text>
+            </view>
+        </radio-group>
+
+        <checkbox-group wx:if="{{question.questiontype === '多选'}}" class="group" bindchange="checkboxChange">
+            <view class="row option-line" wx:for="{{question.options}}" wx:key="itemprefix">
+                <checkbox
+                    class="checkbox"
+                    color="#1890ff"
+                    value="{{item.itemcode}}"
+                    checked="{{checkboxChecked[item.itemcode]}}"
+                />
+                <text data-itemcode="{{item.itemcode}}" bindtap="checkTextTap">{{item.itemprefix}}：{{item.itemtitle}}</text>
+            </view>
+        </checkbox-group>
+
+        <textarea
+            class="textarea"
+            bindinput="textChange"
+            wx:if="{{question.questiontype === '填空'}}"
+        />
+
+    </view>
+</view>

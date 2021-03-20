@@ -1,0 +1,19 @@
+@import "../../styles/layout.wxss";
+@import "../../styles/variable.wxss";
+
+.info {
+  margin-bottom: 15rpx;
+  clear: both;
+  overflow: hidden;
+}
+.label {
+  width: 35%;
+  color: #696969;
+  float: left;
+}
+.value {
+  width: 65%;
+  float: right;
+  text-align: right;
+  color: #696969;
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "input-item": "/components/input-item/input-item",
+    "van-notify": "/components/vant/notify/index"
+  },
+  "navigationBarTitleText": "绑定手机号"
+}

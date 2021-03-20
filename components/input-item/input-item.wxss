@@ -1,0 +1,30 @@
+@import "../../styles/layout.wxss";
+@import "../../styles/variable.wxss";
+.container {
+  margin-bottom: 30rpx;
+  height: 110rpx;
+}
+.input-label {
+  font-size: var(--fontSize-normal);
+  margin-bottom: 20rpx;
+}
+.input-content {
+  flex: 1;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+.input {
+  flex: 1;
+  font-size: var(--fontSize-xl);
+}
+.placeholder {
+  color: #696969;
+  font-size: var(--fontSize-xl);
+}
+.radio {
+  margin-right: 20rpx;
+}
+.required {
+  color: var(--color-danger);
+}

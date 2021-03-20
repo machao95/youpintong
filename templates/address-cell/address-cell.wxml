@@ -1,0 +1,27 @@
+<template name="address-cell">
+    <view class="address-box">
+        <view class="address-image"></view>
+
+        <view class="row-between address-content">
+
+            <view class="address-car">
+                <image src="/assets/images/icon/car.png"></image>
+            </view>
+
+            <view class="address-center">
+                <view wx:if="{{address.addid}}">
+                    <view class="address-title">{{address.name}} {{address.mobile}}</view>
+                    <view class="address-detail">
+                        {{address.address}}
+                    </view>
+                </view>
+                <view wx:else>请选择收货地址</view>
+            </view>
+
+            <view class="address-action column-center" wx:if="{{action}}">
+                <van-icon name="arrow" size="25" style="color: #333" />
+            </view>
+        </view>
+
+    </view>
+</template>

@@ -1,0 +1,56 @@
+@import '../../templates/empty/empty.wxss';
+@import '../../templates/loadMore/loadMore.wxss';
+.page-collection-list {
+    background: #f1f1f1;
+}
+.content {
+    padding: 20rpx 0 20rpx;
+    overflow: hidden;
+    min-height: 90vh;
+}
+.action {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    border-top: 1px solid #e2e2e2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: var(--fontSize-xs);
+}
+.action-left  {
+    padding: 0 20rpx 0 20rpx;
+}
+.action-checkall {
+    margin-right: 10rpx;
+}
+.action-year {
+    margin-right: 10rpx;
+}
+.action-total {
+    text-align: right;
+}
+.action-right {
+    height: 100%;
+    flex: 1;
+}
+.action-takeout {
+    height: 100%;
+    width: 50%;
+    float: right;
+}
+.action-btn {
+    color: #fff;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.action-btn-pay {
+    background: var(--color-danger);
+}
+.action-btn-out {
+    background: #ddd;
+}
+.text-danger {
+    color: var(--color-danger);
+}

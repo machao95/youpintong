@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+      "van-tabs": "/components/vant/tabs/index",
+      "van-tab": "/components/vant/tab/index",
+      "van-icon": "/components/vant/icon/index",
+      "van-checkbox": "/components/vant/checkbox/index",
+      "van-stepper": "/components/vant/stepper/index",
+      "collection-item": "/components//collection-item/collection-item"
+    },
+    "navigationBarTitleText": "我的洞藏"
+  }

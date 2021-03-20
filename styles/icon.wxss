@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'iconfont';
+    /* project id 1171893 */
+    src: url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.eot");
+    src: url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.woff2") format("woff2"), url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.woff") format("woff"), url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.ttf") format("truetype"), url("//at.alicdn.com/t/font_1171893_9nhy536mz9v.svg#iconfont") format("svg");
+}
+
+icon {
+    font-family: "iconfont" !important;
+    font-size: 20px;
+    line-height: 20px;
+    color: #509AFF;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5 rpx;
+}
+
+icon.xxlarge {
+    line-height: 40px;
+    font-size: 40px;
+}
+
+icon.xlarge {
+    line-height: 35px;
+    font-size: 35px;
+}
+
+icon.large {
+    line-height: 30px;
+    font-size: 30px;
+}
+
+icon.normal {
+    line-height: 25px;
+    font-size: 25px;
+}
+
+icon.small {
+    line-height: 20px;
+    font-size: 20px;
+}
+
+icon.xsmall {
+    line-height: 15px;
+    font-size: 15px;
+}
+
+.icon-laihuijiantou:before {
+    content: "\e656";
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "input-item": "/components/input-item/input-item",
+    "van-icon": "/components/vant/icon/index",
+    "van-notify": "/components/vant/notify/index"
+  },
+  "navigationBarTitleText": "金额申诉"
+}

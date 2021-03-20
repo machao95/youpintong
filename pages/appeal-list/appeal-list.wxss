@@ -1,0 +1,7 @@
+@import '../../templates/empty/empty.wxss';
+.tabs {
+  border-bottom: 1px solid var(--color-border);
+}
+.panel {
+  padding: 40rpx;
+}

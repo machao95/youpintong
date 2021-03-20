@@ -1,0 +1,36 @@
+
+<view class="page-detail">
+
+    <view class="big-title">申诉信息</view>
+
+    <view class="info-box">
+        <info-item
+            wx:for="{{$.appealFields}}"
+            wx:key="name"
+            wx:if="{{detail[item.name]}}"
+            label="{{item.label}}"
+            value="{{detail[item.name]}}"
+        />
+    </view>
+
+    <view class="big-title">申诉凭证</view>
+
+    <view class="info-box row-between">
+        <view
+            class="image-box"
+            wx:for="{{detail._ftzf_yj_supplier_fileList}}"
+            wx:key="index"
+        >
+            <image src="{{imgUrl + '/' + item.filename}}" data-index="{{index}}" bindtap="previewImage" />
+        </view>
+    </view>
+
+    <view
+        class="submit-btn"
+        wx:if="{{detail.appealstate === '已提交' || detail.appealstate === '提交审核'}}"
+        bind:tap="handleEdit"
+    >
+        修改
+    </view>
+
+</view>

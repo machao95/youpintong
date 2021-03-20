@@ -1,0 +1,12 @@
+.loadingMore{
+  text-align: center;
+  padding: 18rpx 0;
+}
+.loading-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.loading-text{
+  padding-left: 15rpx;
+  color: #666;
+}

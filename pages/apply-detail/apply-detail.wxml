@@ -1,0 +1,64 @@
+
+<view class="page-detail">
+
+    <view class="big-title">供货商基本信息</view>
+
+    <view class="info-box">
+        <info-item
+            wx:for="{{$.companyFields}}"
+            wx:key="name"
+            wx:if="{{detail[item.name]}}"
+            label="{{item.label}}"
+            value="{{detail[item.name]}}"
+        />
+    </view>
+
+    <view class="big-title">申报材料</view>
+
+    <view class="info-box">
+        <view class="file-box" wx:for="{{$.fileFields}}" wx:key="name">
+            <view class="file-label">{{item.label}}:</view>
+            <view class="row" wx:if="{{files[item.name]}}">
+                <view
+                    class="image-box"
+                    wx:for="{{files[item.name]}}"
+                    wx:key="id"
+                    wx:for-index="fileIndex"
+                    wx:for-item="file"
+                >
+                    <image src="{{imgUrl + '/' + file.filename}}" data-index="{{fileIndex}}" data-name="{{item.name}}" bindtap="previewImage" />
+                </view>
+            </view>
+            <view wx:else>无</view>
+        </view>
+    </view>
+
+    <view class="big-title">联系人信息</view>
+
+    <view class="info-box" wx:for="{{detail._ftzf_yj_supplier_linkList || []}}" wx:for-item="linkDetail" wx:key="index">
+        <info-item
+            wx:for="{{$.linkFields}}"
+            wx:key="name"
+            wx:if="{{linkDetail[item.name]}}"
+            label="{{item.label}}"
+            value="{{linkDetail[item.name]}}"
+        />
+    </view>
+
+    <view
+        class="submit-btn"
+        wx:if="{{detail.applystate === '已提交' || detail.applystate === '提交审核'}}"
+        bind:tap="handleEdit"
+    >
+        修改
+    </view>
+
+    <view
+        class="submit-btn"
+        wx:if="{{detail.applystate === '申报通过'}}"
+        bind:tap="handleAppeal"
+    >
+        申诉
+    </view>
+
+</view>

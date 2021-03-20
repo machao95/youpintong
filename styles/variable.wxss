@@ -1,0 +1,25 @@
+page {
+
+  --color-primary: #155FE8;
+  --color-danger: #e33;
+  --color-warn: #E6A23C;
+  --color-success: #67C23A;
+  --color-info: #1890ff;
+  --color-bg-gray: #f5f5f5;
+  --color-border: #e8e8e8;
+
+  --color-text-normal: #333;
+  --color-text-gray: #696969;
+  --color-green: #56CC95;
+
+  --fontSize-xxl: 34rpx;
+  --fontSize-xl: 32rpx;
+  --fontSize-lg: 30rpx;
+  --fontSize-normal: 28rpx;
+  --fontSize-sm: 26rpx;
+  --fontSize-xs: 24rpx;
+  --fontSize-xxs: 22rpx;
+
+  --button-primary-color: var(--color-primary);
+
+}

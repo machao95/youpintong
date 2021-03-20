@@ -1,0 +1,13 @@
+@import "../../styles/layout.wxss";
+@import "../../styles/variable";
+.empty-container {
+  height: 600rpx;
+}
+.empty-img {
+  width: 300rpx;
+  height: 300rpx;
+}
+.empty-text {
+  margin-top: 30rpx;
+  color: #999;
+}

@@ -1,0 +1,35 @@
+/**app.wxss**/
+/* @import "./styles/icon.wxss"; */
+@import "./styles/layout.wxss";
+@import "./styles/variable.wxss";
+
+view {
+  font-size: var(--fontSize-normal);
+  box-sizing: border-box;
+  color: #333;
+}
+text {
+  color: #333;
+}
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+navigator {
+  color: var(--color-info);
+}
+.navigator-hover {
+  background-color: transparent;
+}
+
+.submit-btn {
+  padding: 15rpx 20rpx;
+  margin-top: 40rpx;
+  color: #ffffff;
+  font-size: var(--fontSize-xl);
+  text-align: center;
+  background: var(--color-primary);
+  border-radius: 4px;
+}

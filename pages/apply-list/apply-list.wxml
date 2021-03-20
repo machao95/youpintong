@@ -1,0 +1,63 @@
+<import src='../../templates/empty/empty.wxml' />
+
+<view class="page-apply-list">
+
+    <van-tabs active="{{status}}" color="#1890ff" nav-class="tabs" bind:change="getApplyList">
+
+        <van-tab title="{{'已提交 (' + (submited.length || '0') + ')' }}" name="submited">
+
+            <view class="panel" wx:if="{{submited.length}}">
+                <list-cell
+                    wx:for="{{submited}}"
+                    wx:key="index"
+                    name="{{item.entname}}"
+                    time="{{item.applytime}}"
+                    status="{{item.applystate}}"
+                    data-item="{{item}}"
+                    bind:tap="handleDetail"
+                />
+            </view>
+
+            <template is="empty" wx:else data="{{emptyTip: '您当前未提交过任何申报'}}"></template>
+
+        </van-tab>
+
+        <van-tab title="{{'审核中 (' + (verify.length || '0') + ')' }}" name="verify">
+
+            <view class="panel" wx:if="{{verify.length}}">
+                <list-cell
+                    wx:for="{{verify}}"
+                    wx:key="index"
+                    name="{{item.entname}}"
+                    time="{{item.applytime}}"
+                    status="{{item.applystate}}"
+                    data-item="{{item}}"
+                    bind:tap="handleDetail"
+                />
+            </view>
+
+            <template is="empty" wx:else data="{{emptyTip: '您当前没有进行中的申报'}}"></template>
+
+        </van-tab>
+
+        <van-tab title="{{'已办结 (' + (complete.length || '0') + ')' }}" name="complete">
+
+            <view class="panel" wx:if="{{complete.length}}">
+                <list-cell
+                    wx:for="{{complete}}"
+                    wx:key="index"
+                    name="{{item.entname}}"
+                    time="{{item.applytime}}"
+                    status="{{item.applystate}}"
+                    data-item="{{item}}"
+                    bind:tap="handleDetail"
+                />
+            </view>
+
+            <template is="empty" wx:else data="{{emptyTip: '您当前没有已办结的申报'}}"></template>
+
+        </van-tab>
+
+    </van-tabs>
+
+</view>

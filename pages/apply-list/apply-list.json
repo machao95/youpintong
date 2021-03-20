@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tabs": "/components/vant/tabs/index",
+    "van-tab": "/components/vant/tab/index",
+    "van-icon": "/components/vant/icon/index",
+    "list-cell": "/components/list-cell/list-cell"
+  },
+  "navigationBarTitleText": "我的申报"
+}

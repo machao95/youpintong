@@ -1,0 +1,48 @@
+
+<view class="page-appeal">
+
+    <view class="big-title">申诉信息</view>
+
+    <block>
+        <input-item
+            wx:for="{{$.appealFields}}"
+            wx:key="name"
+            type="{{item.type}}"
+            name="{{item.name}}"
+            value="{{formValue[item.name]}}"
+            label="{{item.label}}"
+            range="{{item.range}}"
+            required="{{item.required}}"
+            bind:change="handleFormItemChange"
+        />
+    </block>
+
+    <view class="image-label">凭证图片</view>
+
+    <view class="image-content">
+
+        <view class="image-box" wx:for="{{oldImages}}" wx:key="index">
+            <view class="close row" bindtap="handleDelImage" data-index="{{index}}" data-type="oldImages">
+                <van-icon color="red" name="cross" />
+            </view>
+            <image src="{{imgUrl + '/' + item.filename}}" bindtap="previewImage" data-index="{{index}}" data-type="oldImages"></image>
+        </view>
+
+        <view class="image-box" wx:for="{{newImages}}" wx:key="index">
+            <view class="close row" bindtap="handleDelImage" data-index="{{index}}" data-type="newImages">
+                <van-icon color="red" name="cross" />
+            </view>
+            <image src="{{item}}" bindtap="previewImage" data-index="{{index}}" data-type="newImages"></image>
+        </view>
+
+        <view class="image-box row" bindtap="chooseImage" wx:if="{{oldImages.length + newImages.length < 9}}">
+            <van-icon name="plus" color="#e8e8e8" size="120rpx" />
+        </view>
+
+    </view>
+
+    <view class="submit-btn" bindtap="handleSubmit">{{type === 'add' ? '提交申诉' : '提交修改'}}</view>
+
+</view>
+
+<van-notify id="appeal" />
