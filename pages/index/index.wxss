@@ -63,3 +63,32 @@
   height: 0;
   color: transparent;
 }
+
+
+.swiper-img {
+  width: 100%;
+  height: 100%;
+}
+
+.weather-box {
+  margin-top: 5rpx;
+  background: #1890ff;
+  padding: 50rpx;
+}
+.map-img {
+  width: 60rpx;
+  height: 60rpx;
+}
+.date {
+  font-size: 54rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.year {
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+.city-wether {
+  margin-top: 20rpx;
+  color: #FFFFFF;
+}

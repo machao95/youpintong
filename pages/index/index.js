@@ -3,13 +3,13 @@ import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
 import noticeApi from '../../api/noticeApi';
-
+var amapFile = require('../../libs/amap-wx.js');
 const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
     use: ['userInfo'],
     data: {
         userInfo: {},
-        noticeList: [],
+        noticeList: [{url: '/assets/images/me.png'}, {url: '/assets/images/index.png'}],
         scrollAnimate: true,
         activeNoticeIndex: 0, // 当前显示的通知索引
         activeNotice: undefined // 当前显示的通知id
@@ -18,8 +18,18 @@ create.Page(store, {
     timeout: undefined,
 
     onShow() {
-        this.setData({userInfo: this.store.data.userInfo});
-        this.getNoticeList()
+      this.setData({userInfo: this.store.data.userInfo});// this.getNoticeList();
+      var myAmapFun = new amapFile.AMapWX({key:'e2aeaa506f26abb07c4e08a5c1c7f328'});
+      myAmapFun.getWeather({
+        success: function(data){
+          //成功回调
+          console.log(data)
+        },
+        fail: function(info){
+          //失败回调
+          console.log(info)
+        }
+      })
     },
 
     onHide() {
