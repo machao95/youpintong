@@ -13,7 +13,7 @@
                 bindtap="toNoticeDetail"
                 id="{{'notice-' + item.id}}"
             >
-                <text class="notice-tag">消息000</text>
+                <text class="notice-tag">消息002</text>
                 <text>{{item.ftitle}}</text>
             </view>
         </block>
