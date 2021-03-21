@@ -1,0 +1,37 @@
+import create from '../../libs/create'
+import store from '../../store/index'
+import wxUtils from '../../utils/wxUtils';
+import Tips from '../../utils/tips';
+import newsApi from '../../api/newsApi'
+
+const regeneratorRuntime = require('../../libs/runtime.js');
+create.Page(store, {
+
+  use: ['userInfo', 'token'],
+
+  data: {
+    userInfo: {},
+    list: []
+  },
+
+  onShow() {
+    // this.getNewsList()
+  },
+
+  async getNewsList() {
+    const list = newsApi.getCollection({});
+    this.setData({list});
+  },
+
+  handleCollect(e) {
+    console.log(e)
+  },
+
+  handleComment(e) {
+    console.log(e, 'comment');
+  },
+
+  handleThumbs() {
+    this.triggerEvent('thumbs', this.detail.id)
+  }
+});

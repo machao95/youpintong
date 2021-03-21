@@ -1,0 +1,4 @@
+@import '../../templates/empty/empty.wxss';
+.list {
+  padding: 20rpx;
+}

@@ -1,11 +1,3 @@
-
-<view class="header row">
-    <view class="portrait-box">
-        <image class="portrait" src="{{$.userInfo.avatarUrl || '/assets/tab/mine.png'}}"></image>
-    </view>
-    <view class="nickname ellipsis column">{{$.userInfo.nickName || '请先登录'}}</view>
-</view>
-
 <view class="main">
 
     <view class="login-box" wx:if="{{!$.token}}">
@@ -14,57 +6,89 @@
         <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleLogin" class="login-btn">登录</button>
     </view>
 
-   <block wx:else>
+    <block wx:else>
 
-       <view class="menu-box">
+        <view class="header column-between">
 
-           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="validate" bind:tap="handleNavigate">
-               <view class="cell-image">
-                   <image src="/assets/images/validate.png"></image>
+            <view class="portrait-box">
+                <image class="portrait" src="{{$.userInfo.avatarUrl || '/assets/tab/mine.png'}}"></image>
+            </view>
+
+            <view class="nickname ellipsis column">{{$.userInfo.nickName || '请先登录'}}</view>
+
+            <view class="menu row-around">
+               <view class="menu-item column-between" bind:tap="toGoodsCollection">
+                   <view>10</view>
+                   <view>商品收藏</view>
                </view>
-               <view class="cell-text">绑定手机号</view>
-               <block>
-                   <text class="cell-value" wx:if="{{userInfo.bindStatus}}">{{userInfo.mobile}}</text>
-                   <van-icon class="cell-icon" name="arrow"></van-icon>
-               </block>
-           </view>
+                <view class="sprite"></view>
+                <view class="menu-item column-between" bind:tap="toNewsCollection">
+                    <view>10</view>
+                    <view>文章收藏</view>
+                </view>
+                <view class="sprite"></view>
+                <view class="menu-item column-between" bind:tap="toNewsThumbs">
+                    <view>10</view>
+                    <view>文章点赞</view>
+                </view>
+            </view>
 
-           <view class="divider"></view>
+            <view class="grade row-between">
+                <image class="grade-img" src="/assets/icon/shuqian.png"></image>
+                <text class="grade-text">您有 99999 积分，可用积分兑换物品</text>
+                <van-icon class="cell-icon" name="arrow"></van-icon>
+            </view>
 
-           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="apply" bind:tap="handleNavigate">
-               <view class="cell-image">
-                   <image src="/assets/images/apply.png"></image>
-               </view>
-               <view class="cell-text">我的申报</view>
-               <van-icon class="cell-icon" name="arrow"></van-icon>
-           </view>
+        </view>
 
-           <view class="divider"></view>
+        <view class="panel">
+            <view class="panel-header row-between">
+                <text>积分记录</text>
+                <view class="row-between more"  bind:tap="toGradeRecord">
+                    <text>查看全部记录</text>
+                    <van-icon color="#999" name="arrow"></van-icon>
+                </view>
+            </view>
+            <view class="panel-body">
+                <view class="f-item row-between">
+                    <view class="f-date">12-09</view>
+                    <view class="f-text ellipsis">查询油价信查询油价信息获得查询油价信息获得查询油价信息获得息获得</view>
+                    <view class="f-num">+10分</view>
+                </view>
+                <view class="f-item row-between">
+                    <view class="f-date">12-09</view>
+                    <view class="f-text ellipsis">查询油价信查询油价信息获得查询油价信息获得查询油价信息获得息获得</view>
+                    <view class="f-num">+10分</view>
+                </view>
+            </view>
+        </view>
 
-           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="appeal" bind:tap="handleNavigate">
-               <view class="cell-image">
-                   <image src="/assets/images/appeal.png"></image>
-               </view>
-               <view class="cell-text">我的申诉</view>
-               <van-icon class="cell-icon" name="arrow"></van-icon>
-           </view>
+        <view class="btn-box row-around">
 
-<!--           <view class="divider"></view>-->
+            <view class="btn-item column-center"  bind:tap="toAddress">
+                <view class="btn-img-box">
+                    <image src="/assets/icon/dizhi.png"></image>
+                </view>
+                <view class="btn-text">收货地址</view>
+            </view>
 
-<!--           <view class="cell-item row-between" hover-class="cell-hover" hover-stay-time="70" data-name="vote" bind:tap="handleNavigate">-->
-<!--               <view class="cell-image">-->
-<!--                   <image src="/assets/images/vote.png"></image>-->
-<!--               </view>-->
-<!--               <view class="cell-text">投票结果查看</view>-->
-<!--               <van-icon class="cell-icon" name="arrow"></van-icon>-->
-<!--           </view>-->
+            <view class="btn-item column-center" bind:tap="toSettings">
+                <view class="btn-img-box">
+                    <image src="/assets/icon/setting.png"></image>
+                </view>
+                <view class="btn-text">设置</view>
+            </view>
 
-       </view>
+            <view class="btn-item column-center" bind:tap="toFeedBack">
+                <view class="btn-img-box">
+                    <image src="/assets/icon/bug.png"></image>
+                </view>
+                <view class="btn-text">报个BUG</view>
+            </view>
 
-       <view class="out-box">
-           <button bind:tap="handleLogout">退出登录</button>
-       </view>
+        </view>
 
-   </block>
+
+    </block>
 
 </view>

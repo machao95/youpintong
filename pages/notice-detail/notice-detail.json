@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "input-item": "/components/input-item/input-item",
-    "van-icon": "/components/vant/icon/index",
-    "info-item": "/components/info-item/info-item",
-    "van-notify": "/components/vant/notify/index"
-  },
-  "navigationBarTitleText": "通知详情"
-}

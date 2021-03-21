@@ -49,7 +49,7 @@ const ToOperationResult = function(res, codeMsg = {}, successCodes = ["0"]) {
   }
   return {
     success: false,
-    errMsg: null
+    errMsg: '无结果'
   };
 };
 

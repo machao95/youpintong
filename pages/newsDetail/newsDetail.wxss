@@ -1,0 +1,20 @@
+
+@import '../../wxParse/wxParse.wxss';
+
+.container {
+  margin: 40rpx 20rpx;
+}
+.title {
+  font-size: 42rpx;
+  font-weight: bold;
+}
+.desc {
+  color: #999;
+  font-size: var(--fontSize-sm);
+  margin: 10rpx 0;
+}
+
+.main-pic {
+  width: 100%;
+  margin-bottom: 10rpx;
+}

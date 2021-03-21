@@ -1,0 +1,12 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+
+    <view class="title">油价调整消息：今天1月17日，全国92号、95号汽油零售限价。</view>
+
+    <view class="desc">来源：腾讯新闻 | 2021-01-17 10:45:10</view>
+
+    <image class="main-pic" src="https://img.xiaopiu.com/userImages/img390817675385dc8.jpg"></image>
+
+    <template is="wxParse" data="{{wxParseData: content.nodes}}"/>
+
+</view>

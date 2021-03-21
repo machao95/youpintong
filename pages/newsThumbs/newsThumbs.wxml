@@ -1,0 +1,14 @@
+<import src='../../templates/empty/empty.wxml' />
+
+<view class="list" wx:if="{{list.length >= 0}}">
+    <news-item
+        bind:detail="handleDetail"
+        bind:collect="handleCollect"
+        bind:comment="handleComment"
+        bind:thumbs="handleThumbs"
+    />
+    <news-item></news-item>
+</view>
+
+<template is="empty" wx:else data="{{emptyTip: '您还没有点赞过的文章，快去看看吧'}}"></template>
+

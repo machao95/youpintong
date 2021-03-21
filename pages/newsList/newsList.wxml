@@ -1,0 +1,55 @@
+
+
+<view>
+    <van-tabs active="{{status}}" color="#1890ff" nav-class="tabs" bind:change="getNewsList">
+
+        <van-tab title="油价信息" name="price">
+
+            <view class="panel">
+
+                <news-item
+                    type="{{index === 0 ? 'first' : 'normal'}}"
+                    wx:for="{{newsList.price}}"
+                    wx:key="index"
+                    detail="{{item}}"
+                    bind:collect="handleCollect"
+                    bind:comment="handleComment"
+                    bind:thumbs="handleThumbs"
+                />
+            </view>
+
+        </van-tab>
+
+        <van-tab title="汽车资讯" name="car">
+
+            <view class="panel">
+                <news-item
+                    type="{{index === 0 ? 'first' : 'normal'}}"
+                    wx:for="{{newsList.car}}"
+                    wx:key="index"
+                    detail="{{item}}"
+                    bind:collect="handleCollect"
+                    bind:comment="handleComment"
+                    bind:thumbs="handleThumbs"
+                />
+            </view>
+
+        </van-tab>
+
+        <van-tab title="历史记录" name="history">
+
+            <view class="panel">
+                <news-item
+                    wx:for="{{newsList.history}}"
+                    wx:key="index"
+                    detail="{{item}}"
+                    bind:collect="handleCollect"
+                    bind:comment="handleComment"
+                    bind:thumbs="handleThumbs"
+                />
+            </view>
+
+        </van-tab>
+
+    </van-tabs>
+</view>

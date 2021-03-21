@@ -1,0 +1,20 @@
+
+<view class="settings">
+
+    <van-cell-group>
+        <van-cell
+            is-link
+            title="关于油品通"
+            link-type="navigateTo"
+            url="/pages/about/about"
+        />
+        <van-cell
+            is-link
+            title="帮助与反馈"
+            link-type="navigateTo"
+            url="/pages/feedback/feedback"
+        />
+    </van-cell-group>
+
+
+</view>

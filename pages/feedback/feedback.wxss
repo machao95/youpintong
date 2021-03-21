@@ -1,0 +1,61 @@
+
+.container {
+  margin: 20rpx;
+}
+.item {
+  margin-bottom: 30rpx;
+}
+.title {
+  margin-bottom: 10rpx;
+}
+textarea {
+  width: 94%;
+  background: #f2f2f2;
+  padding: 20rpx;
+}
+.img-box {
+  background: #f2f2f2;
+  padding: 20rpx;
+  overflow: hidden;
+}
+input {
+  background: #f2f2f2;
+  padding-left: 20rpx;
+  font-size: var(--fontSize-normal);
+}
+
+.btn-submit {
+  width: 90%;
+  padding: 20rpx 0;
+  text-align: center;
+  background: #ff6b6b;
+  color: #FFFFFF;
+  margin: 40rpx auto;
+  border-radius: 50rpx;
+}
+
+.img-item {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.img-item image {
+  width: 100%;
+  height: 100%;
+}
+.icon-close {
+  position: absolute;
+  right:-10rpx;
+  top: -10rpx;
+  color: var(--color-danger);
+}
+
+.img-choose {
+  border: 1px solid #ccc;
+  font-size: 32rpx;
+  background: #ccc;
+}
+

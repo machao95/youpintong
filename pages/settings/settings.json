@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "/components/vant/icon/index",
+    "van-cell-group": "/components/vant/cell-group/index",
+    "van-cell": "/components/vant/cell/index"
+  },
+  "navigationBarTitleText": "设置"
+}
+

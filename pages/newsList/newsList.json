@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tabs": "/components/vant/tabs/index",
+    "van-tab": "/components/vant/tab/index",
+    "van-icon": "/components/vant/icon/index",
+    "news-item": "/components/news-item/news-item"
+  },
+  "navigationBarTitleText": "资讯"
+}

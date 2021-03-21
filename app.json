@@ -1,25 +1,23 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/apply/apply",
     "pages/mine/mine",
-    "pages/appeal/appeal",
-    "pages/appeal-middle/appeal-middle",
-    "pages/appeal-list/appeal-list",
-    "pages/appeal-detail/appeal-detail",
-    "pages/apply-list/apply-list",
-    "pages/apply-detail/apply-detail",
-    "pages/addlink/addlink",
-    "pages/validate/validate",
-    "pages/vote/vote",
-    "pages/vote-result/vote-result",
-    "pages/notice-detail/notice-detail"
+    "pages/goodsCollection/goodsCollection",
+    "pages/newsCollection/newsCollection",
+    "pages/newsThumbs/newsThumbs",
+    "pages/addressList/addressList",
+    "pages/addressEdit/addressEdit",
+    "pages/feedback/feedback",
+    "pages/newsList/newsList",
+    "pages/newsDetail/newsDetail",
+    "pages/oils/oils",
+    "pages/shopping/shopping"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#155FE8",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
@@ -31,6 +29,24 @@
         "text": "首页",
         "iconPath": "/assets/tab/home.png",
         "selectedIconPath": "/assets/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/newsList/newsList",
+        "text": "资讯",
+        "iconPath": "/assets/tab/zixun.png",
+        "selectedIconPath": "/assets/tab/zixun-active.png"
+      },
+      {
+        "pagePath": "pages/oils/oils",
+        "text": "油品订购",
+        "iconPath": "/assets/tab/jiayou.png",
+        "selectedIconPath": "/assets/tab/jiayou-active.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物",
+        "iconPath": "/assets/tab/shop.png",
+        "selectedIconPath": "/assets/tab/shop-active.png"
       },
       {
         "pagePath": "pages/mine/mine",

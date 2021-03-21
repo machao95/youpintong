@@ -1,0 +1,41 @@
+
+@import '../../templates/empty/empty.wxss';
+
+.list {
+  padding: 20rpx;
+}
+
+.goods-item {
+  padding: 10rpx;
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+}
+.goods-item:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
+.goods-image {
+  width: 150rpx;
+  height: 150rpx;
+}
+.goods-content {
+  flex: 1;
+  padding: 0 10rpx;
+}
+.goods-title {
+  margin-bottom: 10rpx;
+}
+.goods-desc {
+  color: #999;
+  font-size: var(--fontSize-xs);
+}
+.goods-price {
+  font-weight: bold;
+  color: red;
+  margin-bottom: 10rpx;
+}
+
+.goods-number {
+  font-size: var(--fontSize-xs);
+  text-align: right;
+}

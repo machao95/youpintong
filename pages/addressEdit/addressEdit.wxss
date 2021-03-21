@@ -1,0 +1,10 @@
+
+.btn-submit {
+  width: 90%;
+  padding: 20rpx 0;
+  text-align: center;
+  background: #ff6b6b;
+  color: #FFFFFF;
+  margin: 40rpx auto;
+  border-radius: 50rpx;
+}

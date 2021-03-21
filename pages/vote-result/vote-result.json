@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-icon": "/components/vant/icon/index"
-  },
-  "navigationBarTitleText": "投票结果"
-}

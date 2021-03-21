@@ -19,5 +19,5 @@ module.exports = {
             return []
         }
         return res.msg
-    },
+    }
 };

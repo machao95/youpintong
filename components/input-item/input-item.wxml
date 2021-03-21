@@ -36,6 +36,16 @@
             </radio>
         </radio-group>
 
+        <textarea
+            class="input"
+            auto-height
+            bindinput="handleChange"
+            data-name="{{name}}"
+            placeholder="{{placeholder || '请输入'}}"
+            value="{{value}}"
+            wx:if="{{type === 'textarea'}}"
+        />
+
         <slot></slot>
 
     </view>

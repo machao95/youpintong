@@ -1,0 +1,32 @@
+
+
+<view class="container">
+
+    <view class="item">
+        <view class="title">问题与意见</view>
+        <textarea name="name" id="rr" placeholder="请输入您的问题或意见" bindinput="handleProblemChange"></textarea>
+    </view>
+
+    <view class="item">
+        <view class="title">图片（选填，提供问题截图）</view>
+        <view class="img-box row">
+            <view class="img-item" wx:for="{{form.imgUrls}}" wx:key="*this">
+                <image src="{{item}}" bindtap="handlePreview" data-index="{{index}}" />
+                <van-icon class="icon-close" color="#c00" name="close" size="32rpx" bindtap="handleDelImage" data-index="{{index}}" />
+            </view>
+            <view class="img-item img-choose column-center" wx:if="{{form.imgUrls.length < 4}}" bindtap="handleChooseImg">
+                <van-icon name="plus" color="#fff" size="40px"></van-icon>
+            </view>
+        </view>
+    </view>
+
+    <view class="item">
+        <view class="title">联系电话</view>
+        <view class="img-box">
+            <input type="text" bind:change="handlePhoneChange" placeholder="选填，便于我们与你联系" />
+        </view>
+    </view>
+
+    <view class="btn-submit" bind:tap="handleSubmit">提交</view>
+
+</view>

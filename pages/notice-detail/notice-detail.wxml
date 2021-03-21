@@ -1,4 +1,0 @@
-
-<view class="page-notice-detail">
-    <rich-text nodes="{{$.noticeDetail}}" space="nbsp" />
-</view>

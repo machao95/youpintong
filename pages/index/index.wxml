@@ -1,77 +1,65 @@
+<!--<view class="tip row-between">-->
+<!--    <image class="tip-image" src="/assets/icon/guangbo.png"></image>-->
+<!--    <text>欢迎使用油品通小程序，请您使用微信授权登录以便本产品更高的为您服务，谢谢配合</text>-->
+<!--    <image class="tip-image" src="/assets/icon/close.png"></image>-->
+<!--</view>-->
 <view class="header">
-  <swiper indicator-dots="{{true}}"
-          autoplay="{{true}}" interval="{{3000}}">
-    <block wx:for="{{noticeList}}" wx:key="url">
-      <swiper-item>
-        <image src="{{item.url}}" class="swiper-img"></image>
-      </swiper-item>
-    </block>
-  </swiper>
+    <swiper indicator-dots="{{true}}"
+            autoplay="{{true}}" interval="{{3000}}">
+        <block wx:for="{{noticeList}}" wx:key="url">
+            <swiper-item>
+                <image src="{{item.url}}" class="swiper-img"></image>
+            </swiper-item>
+        </block>
+    </swiper>
 </view>
 
 <view class="weather-box">
-  <view class="row-between">
-    <view class="column">
-      <view class="row-between">
-        <view class="date">18</view>
-        <view>
-          <view class="year">星期五</view>
-          <view class="year">03/2021</view>
+    <view class="row-between">
+        <view class="column" style="min-width: 90px">
+            <view class="row-between">
+                <view class="date">{{today.date}}</view>
+                <view>
+                    <view class="year">{{today.day}}</view>
+                    <view class="year">{{today.yearMonth}}</view>
+                </view>
+            </view>
+            <view class="city-wether">{{city.name}}：{{city.weather || ''}} {{city.temperature || ''}}</view>
         </view>
-      </view>
-      <view class="city-wether">北京：晴 0 ~ 20</view>
+        <picker mode="region" bindchange="handleRegionChange" value="{{region}}">
+            <image class="map-img" src="/assets/images/daohang.png"></image>
+        </picker>
     </view>
-    <image class="map-img" src="/assets/images/daohang.png"></image>
-  </view>
 </view>
 
 <view class="price-table">
-  <view class="row-between t-header">
-    <view class="td-left">油品</view>
-    <view class="td-center">油价(元/升)</view>
-    <view class="td-right">涨幅</view>
-  </view>
-  <view class="row-between t-body">
-    <view class="td-left">油品</view>
-    <view class="td-center">油价(元/升)</view>
-    <view class="td-right">涨幅</view>
-  </view>
-</view>
-
-<view class="main">
-
-    <view class="menu-item row" data-index="{{0}}" bind:tap="handleMenuClick">
-        <image class="menu-image" src="/assets/images/validate.png"></image>
-        <view class="menu-content column">
-            <view class="menu-title">您好，{{$.userInfo.nickName || '请先登录'}}</view>
-            <view class="menu-desc">
-                {{userInfo.bindStatus ? "您已通过手机验证" : "验证手机号之后才能进行操作"}}
-            </view>
+    <view class="row-between t-header">
+        <view class="td td-left">油品</view>
+        <view class="td td-center">油价(元/升)</view>
+        <view class="td td-right">涨幅</view>
+    </view>
+    <view class="row-between t-body">
+        <view class="td td-left">98#汽油</view>
+        <view class="td td-center">￥6.45</view>
+        <view class="td td-right">
+            <text class="up">+0.14</text>
         </view>
     </view>
-
-    <view class="menu-item row" data-index="{{1}}" bind:tap="handleMenuClick">
-        <image class="menu-image" src="/assets/images/apply.png"></image>
-        <view class="menu-content column">
-            <view class="menu-title">自主申报</view>
-            <view class="menu-desc">自主申报主体金额欠款自主申报主</view>
+    <view class="row-between t-body">
+        <view class="td td-left">95#汽油</view>
+        <view class="td td-center">￥6.45</view>
+        <view class="td td-right">
+            <text class="up">+0.14</text>
         </view>
     </view>
-
-    <view class="menu-item row" data-index="{{2}}" bind:tap="handleMenuClick">
-        <image class="menu-image" src="/assets/images/appeal.png"></image>
-        <view class="menu-content column">
-            <view class="menu-title">结果申诉</view>
-            <view class="menu-desc">自主申报主体金额欠款自主申报主体金额欠款</view>
-        </view>
+    <view class="row-between t-body">
+        <view class="td td-left">93#汽油</view>
+        <view class="td td-center">￥6.45</view>
+        <view class="td td-right"><text class="up">+0.14</text></view>
     </view>
-
-    <view class="menu-item row" data-index="{{3}}" bind:tap="handleMenuClick">
-        <image class="menu-image" src="/assets/images/vote.png"></image>
-        <view class="menu-content column">
-            <view class="menu-title">投票</view>
-            <view class="menu-desc">处理方式投票</view>
-        </view>
+    <view class="row-between t-body">
+        <view class="td td-left">0#柴油</view>
+        <view class="td td-center">￥6.45</view>
+        <view class="td td-right"><text class="up">+0.14</text></view>
     </view>
-
 </view>

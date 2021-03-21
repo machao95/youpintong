@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "input-item": "/components/input-item/input-item",
+    "van-icon": "/components/vant/icon/index",
+    "info-item": "/components/info-item/info-item",
+    "van-notify": "/components/vant/notify/index",
+    "van-field": "/components/vant/field/index"
+  },
+  "navigationBarTitleText": "编辑收货地址"
+}

@@ -9,7 +9,9 @@ const a = [{
 export default {
   data: {
     userInfo: wx.getStorageSync('userInfo') || {}, // 退出后也不清除
-    token: wx.getStorageSync('token') || undefined, // token
+    token: wx.getStorageSync('token') || 'xxx', // token
+    city: wx.getStorageSync('city') || {code: '', name: '北京', weather: '', temperature: ''},
+    editingAddress: null,
     // 申报 企业信息
     companyFields: [
       {type: 'selector', name: 'suppliertype', label: '供货商类型', range: ['个人', '企业'], required: true},
