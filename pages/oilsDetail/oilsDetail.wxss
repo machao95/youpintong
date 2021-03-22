@@ -1,0 +1,20 @@
+
+.container {
+  margin: 20rpx;
+}
+
+.address {
+  font-size: var(--fontSize-xl);
+  text-align: center;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20rpx;
+}
+
+.detail {
+  margin-top: 20rpx;
+}
+
+.detail image {
+  width: 100%;
+}

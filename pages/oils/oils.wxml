@@ -1,1 +1,27 @@
-<view>待完善</view>
+
+
+<view class="container">
+  <view class="filter-header row-between" bind:tap="changeVisible">
+    <view>按条件筛选</view>
+    <van-icon wx:if="{{filterVisible}}" name="arrow-up" />
+    <van-icon wx:else name="arrow-down" />
+  </view>
+  <view class="filter-panel" animation="{{animationData}}">
+    <view class="filter-title">指定搜索范围：</view>
+    <view class="options-box row">
+      <view wx:for="{{typeConfig}}" wx:key="value" class="option-item {{filters.type == item.value ? 'option-active' : ''}}" data-name="type" data-value="{{item.value}}" bind:tap="handleFilter">{{item.label}}</view>
+      <!-- <view class="option-item {{filter.range == 2 ? 'option-active' : ''}}" data-value="2">柴油</view>
+      <view class="option-item {{filter.range == 3 ? 'option-active' : ''}}" data-value="3">国VI标准</view> -->
+    </view>
+    <view class="filter-title">指定排序方式：</view>
+    <view class="options-box row">
+      <view wx:for="{{sortConfig}}" wx:key="value"  class="option-item {{filters.sort == item.value ? 'option-active' : ''}}" data-name="sort" data-value="{{item.value}}" bind:tap="handleFilter">{{item.label}}</view>
+      <!-- <view class="option-item {{filter.sort == 2 ? 'option-active' : ''}}" data-value="2">按油品价格排序</view> -->
+    </view>
+  </view>
+  <view class="oils-list">
+    <oils-item ></oils-item>
+    <oils-item></oils-item>
+  </view>
+</view>
+

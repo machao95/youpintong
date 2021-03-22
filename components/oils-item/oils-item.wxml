@@ -1,0 +1,16 @@
+
+<view class="oils-box row" bind:tap="handleDetail">
+  <image class="oils-image" src="https://img.xiaopiu.com/userImages/img574017679a12e58.jpg"></image>
+  <view class="oils-content">
+    <view class="oils-title">#95汽油</view>
+    <view class="oils-info column">
+      价格：45元/升
+    </view>
+    <view class="oils-info">
+      销量：300吨/月
+    </view>
+    <view class="oils-info" wx:if="{{showAddress}}">
+      地址：浙江省杭州市萧山区快乐老家化工厂
+    </view>
+  </view>
+</view>

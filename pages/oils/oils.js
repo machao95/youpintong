@@ -11,14 +11,50 @@ create.Page(store, {
   use: ['userInfo', 'token'],
 
   data: {
-    userInfo: {},
+    filterVisible: false,
+    animationData: '',
+    typeConfig: [
+      {label: '汽油', value: 1}, {label: '柴油', value: 2}, {label: '国VI标准', value: 3}, 
+    ],
+    sortConfig: [
+      {label: '按工厂距离排序', value: 1}, {label: '按油品价格排序', value: 2}
+    ],
+    filters: {
+      type: null,
+      sort: null
+    }
   },
 
   onLoad(options) {
-
+    this.getList()
   },
 
   onUnload() {
+
+  },
+
+  changeVisible() {
+    const c = this.data.filterVisible;
+    const height = c ? 0 : 150;
+    if (!this.animation) {
+      this.animation = wx.createAnimation({duration: 200});
+    }
+    this.animation.height(height).step();
+    this.setData({
+      filterVisible: !c,
+      animationData: this.animation.export()
+    });
+  },
+
+  handleFilter(e) {
+    const {name, value} = e.currentTarget.dataset;
+    this.setData({
+      ['filters.' + name]: this.data.filters[name] == value ? null : value
+    });
+    this.getList()
+  },
+
+  getList() {
 
   }
 

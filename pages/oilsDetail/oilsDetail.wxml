@@ -1,0 +1,8 @@
+
+<view class="container">
+  <view class="address">浙江省杭州市萧山区快乐老家化工厂</view>
+  <oils-item showAddress="{{false}}" />
+  <view class="detail">
+    <image mode="widthFix" src="https://img.xiaopiu.com/userImages/img4581784dbd58f0.png"></image>
+  </view>
+</view>
