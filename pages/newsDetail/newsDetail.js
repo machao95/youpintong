@@ -13,8 +13,13 @@ create.Page(store, {
   data: {
     detail: {
       body: '<p>我炸了</p>'
-    }
+    },
+    commentVisible: false,
+    commentValue: '',
+    animationData: '',
   },
+
+  animation: wx.createAnimation({duration: 100}),
 
   onLoad(options) {
     const data = {
@@ -65,6 +70,36 @@ create.Page(store, {
 
   onUnload() {
 
+  },
+
+  handleChange(e) {
+    this.setData({
+      commentValue: e.detail.value
+    })
+  },
+
+  handleSend() {
+    if (!this.data.commentValue) return false;
+    console.log(999);
+    this.setData({commentValue: ''});
+  },
+
+  handleCollect(e) {
+    console.log(e)
+  },
+
+  handleComment(e) {
+    console.log(e, 'comment');
+    const current = this.data.commentVisible;
+    this.animation.height(current ? 0 :'80vh').step();
+    this.setData({
+      animationData: this.animation.export(),
+      commentVisible: !current
+    })
+  },
+
+  handleThumbs() {
+    this.triggerEvent('thumbs', this.detail.id)
   }
 
 

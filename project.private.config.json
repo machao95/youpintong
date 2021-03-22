@@ -46,6 +46,12 @@
         {
           "name": "pages/newsList/newsList",
           "pathName": "pages/newsList/newsList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/newsDetail/newsDetail",
+          "pathName": "pages/newsDetail/newsDetail",
           "scene": null
         }
       ]
