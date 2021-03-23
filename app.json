@@ -11,7 +11,8 @@
     "pages/newsList/newsList",
     "pages/newsDetail/newsDetail",
     "pages/oils/oils",
-    "pages/shopping/shopping"
+    "pages/shopping/shopping",
+    "pages/goodsDetail/goodsDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

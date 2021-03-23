@@ -52,6 +52,12 @@
         {
           "name": "pages/newsDetail/newsDetail",
           "pathName": "pages/newsDetail/newsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/shopping/shopping",
+          "pathName": "pages/shopping/shopping",
           "scene": null
         }
       ]

@@ -1,1 +1,18 @@
-<view>待完善</view>
+<view class="container">
+
+<view class="left">
+
+  <van-sidebar active-key="{{ activeTypeIndex }}" bind:change="handleChangeType">
+      <van-sidebar-item wx:for="{{typeConfig}}" wx:key="value" title="{{item.label}}" />
+  </van-sidebar>
+
+</view>
+
+<view class="right row-between">
+  <view class="goods-item" bind:tap="toDetail" wx:for="{{goods[typeConfig[activeTypeIndex].value] || []}}" wx:key="url">
+    <image class="goods-image" src="{{item.url}}"></image>
+    <view class="goods-title">配电箱</view>
+  </view>
+</view>
+
+</view>

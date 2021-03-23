@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-sidebar": "/components/vant/sidebar/index",
+    "van-sidebar-item": "/components/vant/sidebar-item/index"
+  },
   "navigationBarTitleText": "购物"
 }

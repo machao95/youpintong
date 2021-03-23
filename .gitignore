@@ -12,6 +12,7 @@
 
 # misc
 .DS_Store
+.DS_Store
 
 # umi
 /src/.umi
