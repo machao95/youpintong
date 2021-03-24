@@ -1,0 +1,103 @@
+
+<view class="container">
+
+  <image class="main-pic" src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+
+  <view class="card">
+
+    <view class="price-box row">
+      <text class="price-now-num">￥75</text>
+      <view class="price-origin">
+        <text>价格</text>
+        <text class="price-origin-num">￥120</text>
+      </view>
+    </view>
+
+    <view class="title">户室外不锈钢配电箱监控箱控制箱电控箱.防水箱基业箱300*400*180 </view>
+
+  </view>
+
+  <view class="card">
+
+    <view class="desc row-between">
+      <view class="row">
+        <text class="pr15">发货:</text>
+        <text>浙江温州</text>
+        <view class="line"></view>
+        <text class="pr15">快递:</text>
+        <text class="pr15">15.00元</text>
+      </view>
+      <text>月销量 1000+</text>
+    </view>
+
+    <view class="desc row-between" style="padding-top: 40rpx"  bind:tap="showParamPanel">
+      <view>
+        <text class="pr15">参数:</text>
+        <text>xx品牌xx型号</text>
+      </view>
+      <van-icon name="arrow" color="#666" />
+    </view>
+
+  </view>
+
+  <view class="detail-title-box row-center">
+    <view class="title-line"></view>
+    <view class="detail-title">宝贝详情</view>
+    <view class="title-line"></view>
+  </view>
+
+  <view class="detail-image-box">
+  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>
+  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>
+  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+
+  </view>
+
+
+
+</view>
+
+
+<view class="footer-box">
+  <view class="footer row-between">
+    <view class="op">
+      <view class="collect row" bind:tap="handleCollect">
+          <van-icon name="star-o" size="1em"/>
+          <text>收藏</text>
+      </view>
+    </view>
+    <view class="btns row-between">
+      <view class="btn toCar">加入购物车</view>
+      <view class="btn buy" bind:tap="handleBuy">立即购买</view>
+    </view>
+  </view>
+</view>
+
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  round
+  custom-style="height: 80%;"
+  bind:close="onClose"
+  bind:close="closeParamPanel"
+>
+  <view class="param-panel">
+    <view class="param-title">产品参数</view>
+    <view class="param-item row">
+      <view class="param-label">品牌</view>
+      <view class="param-value">老板电器</view>
+    </view>
+    <view class="param-item row">
+      <view class="param-label">型号</view>
+      <view class="param-value">100*200*30</view>
+    </view>
+    <view class="param-item row">
+      <view class="param-label">适用对象</view>
+      <view class="param-value">市内</view>
+    </view>
+  </view>
+</van-popup>
+
