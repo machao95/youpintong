@@ -14,6 +14,10 @@ create.Page(store, {
     addressList: []
   },
 
+  onLoad(options) {
+    this.setData({type: options.type})
+  },
+
   onShow() {
     // this.getAddressList()
   },
@@ -47,5 +51,12 @@ create.Page(store, {
       console.log(9)
     }).catch(_ => {})
   },
+
+  handleChoose(e) {
+    console.log(this.data)
+    if (this.data.type === 'choose') {
+      wxUtils.backOrNavigate('/pages/orderConfirm/orderConfirm')
+    }
+  }
 
 });

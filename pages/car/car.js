@@ -11,7 +11,8 @@ create.Page(store, {
 
   data: {
     userInfo: {},
-    goodsList: [{id: 0}, {id: 3}, {id: 9}, {id: 90}]
+    goodsList: [{id: 0}, {id: 3}, {id: 9}, {id: 90}],
+    checkedObj: {1: false, 2: true}
   },
 
   onShow() {
@@ -20,7 +21,7 @@ create.Page(store, {
 
   async getGoodsList() {
     const goodsList = goodsApi.getCollection({});
-    console.log(goodsList)
+    console.log(goodsList);
     this.setData({goodsList});
   },
 

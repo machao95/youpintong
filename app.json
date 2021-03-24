@@ -12,7 +12,9 @@
     "pages/newsDetail/newsDetail",
     "pages/oils/oils",
     "pages/shopping/shopping",
-    "pages/goodsDetail/goodsDetail"
+    "pages/goodsDetail/goodsDetail",
+    "pages/orderConfirm/orderConfirm",
+    "pages/car/car"
   ],
   "window": {
     "backgroundTextStyle": "light",

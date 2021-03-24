@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-icon": "/components/vant/icon/index",
+    "van-stepper": "/components/vant/stepper/index"
+  }
+}

@@ -3,7 +3,7 @@
 
     <view class="a-item">
 
-        <view class="a-body row">
+        <view class="a-body row" bind:tap="handleChoose">
             <view class="a-image">马</view>
             <view class="column a-content">
                 <view class="row">
