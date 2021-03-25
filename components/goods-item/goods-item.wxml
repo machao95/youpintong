@@ -8,7 +8,7 @@
     <view class="goods-right column">
         <view class="goods-price">￥21.9</view>
         <view wx:if="{{showNumStep}}">
-            <van-stepper value="{{detail.number || 1}}" min="{{1}}" max="{{999}}" integer></van-stepper>
+            <van-stepper value="{{detail.number || 1}}" min="{{1}}" max="{{999}}" disable-input integer></van-stepper>
         </view>
         <view class="goods-number" wx:elif="{{showNum}}">x1</view>
     </view>

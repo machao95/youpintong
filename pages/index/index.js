@@ -2,7 +2,7 @@ import create from '../../libs/create'
 import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
-import noticeApi from '../../api/noticeApi';
+import commonApi from '../../api/commonApi';
 
 var amapFile = require('../../libs/amap-wx.js');
 const regeneratorRuntime = require('../../libs/runtime.js');
@@ -69,28 +69,6 @@ create.Page(store, {
     this.store.data.city = city;
     wx.setStorageSync('city', city);
     this.getCityWeather(city.name);
-  },
-
-
-  async getNoticeList() {
-    const noticeList = await noticeApi.noticeList({});
-    // 把第一条通知复制到最后项
-    noticeList.length > 1 && noticeList.push({...noticeList[0], id: 'last'});
-    // console.log(noticeList, 'noticeList');
-    // 设置当前显示的消息索引和id
-    this.setData({
-      noticeList,
-      activeNoticeIndex: 0,
-      activeNotice: noticeList[0] ? 'notice-' + noticeList[0].id : undefined
-    });
-    clearTimeout(this.timeout);
-    // 通知数量大于2，2秒后开始滚动
-    if (noticeList.length > 2) {
-      const _this = this;
-      setTimeout(() => {
-        _this.startNoticeScroll()
-      }, 2000)
-    }
   },
 
   startNoticeScroll() {

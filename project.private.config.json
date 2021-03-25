@@ -58,6 +58,24 @@
         {
           "name": "pages/shopping/shopping",
           "pathName": "pages/shopping/shopping",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderConfirm/orderConfirm",
+          "pathName": "pages/orderConfirm/orderConfirm",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsDetail/goodsDetail",
+          "pathName": "pages/goodsDetail/goodsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/car/car",
+          "pathName": "pages/car/car",
           "scene": null
         }
       ]

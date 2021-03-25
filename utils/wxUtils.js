@@ -1,6 +1,7 @@
 const tabPages = [
     '/pages/index/index',
-    '/pages/mine/mine'
+    '/pages/mine/mine',
+    ''
 ];
 /**
  * 如果能够后退（多层），则navigaetBack，否则调用redirectTo

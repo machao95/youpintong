@@ -1,2 +1,55 @@
 
-<goods-item showNumStep></goods-item>
+<view class="panel">
+
+  <view class="panel-header row-end">
+    <view class="op" wx:if="{{manageMode}}"bind:tap="triggerManage">完成</view>
+    <view class="op" wx:else bind:tap="triggerManage">管理</view>
+  </view>
+
+  <view class="panel-body">
+
+    <view class="goods-item row-between" wx:for="{{goodsList}}" wx:key="id">
+      <radio class="check" color="#ff6b6b" value="{{item.id}}" checked="{{checkedObj[item.id]}}"/>
+      <view style="flex: 1">
+        <goods-item showNumStep></goods-item>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+<view class="other-title-box row-center">
+  <view class="title-line"></view>
+  <view class="other-title">猜你喜欢</view>
+  <view class="title-line"></view>
+</view>
+
+<view class="panel">
+
+  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>
+
+  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>
+
+  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>
+
+  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>
+
+</view>
+
+<view class="footer-box">
+  <view class="footer">
+    <view class="row-between">
+      <view>
+        <radio color="#ff6b6b" value="all" checked="{{checkedAll}}"/> 全选
+      </view>
+      <view class="btn btn-remove" wx:if="{{manageMode}}" bind:tap="handleRemove" >删除</view>
+      <view class="row" wx:else>
+        <view class="total">合计：<text class="price">￥99.8</text></view>
+        <view class="btn btn-pay">结算</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+

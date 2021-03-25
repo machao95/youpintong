@@ -62,10 +62,14 @@
 
 <view class="footer-box">
   <view class="footer row-between">
-    <view class="op">
-      <view class="collect row" bind:tap="handleCollect">
+    <view class="op row">
+      <view class="icon row" bind:tap="handleCollect">
           <van-icon name="star-o" size="1em"/>
           <text>收藏</text>
+      </view>
+      <view class="icon row" bind:tap="handleCar">
+        <van-icon name="cart-o" size="1em"/>
+        <text>购物车</text>
       </view>
     </view>
     <view class="btns row-between">

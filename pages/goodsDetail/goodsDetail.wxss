@@ -96,6 +96,9 @@ page {
   padding: 0 20rpx 0 40rpx;
   height: 100%;
 }
+.icon {
+  margin-right: 20rpx;
+}
 
 .btns {
 

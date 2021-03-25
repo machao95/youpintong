@@ -27,6 +27,10 @@ create.Page(store, {
     this.setData({show: false})
   },
 
+  handleCar() {
+    wxUtils.backOrNavigate('/pages/car/car')
+  },
+
   handleBuy() {
     wxUtils.backOrNavigate(`/pages/orderConfirm/orderConfirm?id=${Math.random()}`)
   }
