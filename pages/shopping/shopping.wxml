@@ -16,3 +16,8 @@
 </view>
 
 </view>
+
+<view class="fixed-cart row-center" bind:tap="toCart">
+  <image class="fixed-cart-iamge" src="/assets/icon/cart.png"></image>
+</view>
+

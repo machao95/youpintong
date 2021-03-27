@@ -9,7 +9,7 @@ const a = [{
 export default {
   data: {
     userInfo: wx.getStorageSync('userInfo') || {}, // 退出后也不清除
-    token: wx.getStorageSync('token') || 'xxx', // token
+    token: wx.getStorageSync('token') || '', // token
     city: wx.getStorageSync('city') || {code: '', name: '北京', weather: '', temperature: ''},
     editingAddress: null,
     // 申报 企业信息

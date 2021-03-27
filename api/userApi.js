@@ -22,11 +22,22 @@ module.exports = {
   // 登录
   async login(data) {
     Tips.loading('正在登录');
-    const res = await request.get('WX/WXLogin', data);
+    const res = await request.get('auth/session', data);
     Tips.loaded();
-    const {success, errMsg} = ToOperationResult(res, {}, ["0", "-1002", "-1003"]);
-    if (!success) Tips.info({title: '错误', content: errMsg});
-    return success ? res : false
+    // const {success, errMsg} = ToOperationResult(res, {}, ["0", "-1002", "-1003"]);
+    console.log(res, '0');
+    // if (!success) Tips.info({title: '错误', content: errMsg});
+    return res.data
+  },
+
+  async getUserInfo(params) {
+    Tips.loading('获取用户信息');
+    const res = await request.get('auth/decode_userinfo', params);
+    Tips.loaded();
+    // const {success, errMsg} = ToOperationResult(res, {}, ["0", "-1002", "-1003"]);
+    console.log(res, '1');
+    // if (!success) Tips.info({title: '错误', content: errMsg});
+    return res.data
   },
 
   // 登出

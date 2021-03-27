@@ -25,14 +25,14 @@ const mock = function(data = {}, time = 500) {
 };
 
 // 检测接口返回是否正确
-const ToOperationResult = function(res, codeMsg = {}, successCodes = ["0"]) {
+const ToOperationResult = function(res, codeMsg = {}, successCodes = [0, 200]) {
   if (res) {
-    if (successCodes.indexOf(res.errcode) >= 0) {
+    if (successCodes.indexOf(res.code) >= 0) {
       return {
         success: true,
         errMsg: null
       };
-    } else if (res.errcode == "-9999" || res.errcode == "-8888") {
+    } else if (res.code == "-9999" || res.code == "-8888") {
       Tips.error('登录过期');
       wx.setStorageSync('token', undefined);
       store.data.token = '';

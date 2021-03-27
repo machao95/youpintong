@@ -8,7 +8,8 @@ const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
   use: ['userInfo', 'token'],
   data: {
-    userInfo: {}
+    userInfo: {},
+    canIUseGetUserProfile: false
   },
 
   onShow() {
@@ -16,10 +17,44 @@ create.Page(store, {
   },
 
   onLoad(options) {
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+    }
+  },
 
+  getUserInfo(e) {
+    const {userInfo} = e.detail;
+    userInfo && this.doLogin(userInfo);
+  },
+
+  async getUserProfile() {
+    const res = await wxUtils.wxFuncSync('getUserProfile', {desc: '获取头像、昵称等公开信息'});
+    res.userInfo && this.doLogin(res.userInfo);
+  },
+
+  async doLogin(userInfo) {
+    // 保存用户信息
+    this.store.data.userInfo = {...userInfo, ...this.store.data.userInfo};
+    wx.setStorageSync('userInfo', this.store.data.userInfo);
+    // 登录
+    const {code} = await wxUtils.wxFuncSync('login');
+    if (!code) return Tips.error('微信登录失败');
+    const data = await userApi.login({code: code});
+    if (data) {
+      // 保存token
+      this.store.data.token = data.userToken;
+      wx.setStorageSync('token', data.userToken);
+      // 保存用户信息到数据库
+      // userApi.saveUserInfo(userInfo)
+    }
   },
 
   async handleLogin(e) {
+    const res = await wxUtils.wxFuncSync('getUserProfile');
+    console.log(res);
+    return;
     const {encryptedData, iv, signature, userInfo} = e.detail;
     if (userInfo) {
       // 保存用户信息
@@ -28,23 +63,25 @@ create.Page(store, {
       // 获取code
       const {code} = await wxUtils.wxFuncSync('login');
       if (code) {
-        // 去往登录
-        const res = await userApi.login({jscode: code});
-        if (res) {
-          const notBindPhoneNum = res.errcode === "-1002" || res.errcode === "-1003";
-          // 保存token、openId、是否已绑定手机号
-          this.store.data.token = res.session_key;
-          wx.setStorageSync('token', res.session_key);
-          this.store.data.userInfo.openId = res.openid;
-          this.store.data.userInfo.bindStatus = !notBindPhoneNum;
-          this.store.data.userInfo.mobile = res.mobile;
-          wx.setStorageSync('userInfo', this.store.data.userInfo);
-          // 未绑定手机号，前往绑定
-          if (notBindPhoneNum) {
-            wxUtils.backOrNavigate('/pages/validate/validate')
-          } else {
-            wxUtils.backOrNavigate('/pages/index/index')
-          }
+        // 登录
+        const data = await userApi.login({code: code});
+        if (data) {
+          // 保存token
+          this.store.data.token = data.userToken;
+          wx.setStorageSync('token', data.userToken);
+          //
+          // this.store.data.userInfo.openId = res.openid;
+          // this.store.data.userInfo.mobile = res.mobile;
+          // wx.setStorageSync('userInfo', this.store.data.userInfo);
+          // 获取用户信息
+          const raw = await wxUtils.wxFuncSync('getUserInfo');
+          console.log(raw, 'raw')
+          const userInfo = await userApi.getUserInfo({
+            openId: 'odVCA5X80oxVG-K27NyPw-pRM3Y4',
+            encryptedData: raw.encryptedData,
+            iv: raw.iv
+          });
+          console.log(userInfo)
         }
       } else {
         Tips.error('微信登录失败')

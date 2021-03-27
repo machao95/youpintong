@@ -99,6 +99,9 @@ page {
 .icon {
   margin-right: 20rpx;
 }
+.icon-text {
+  font-size: var(--fontSize-xs);
+}
 
 .btns {
 

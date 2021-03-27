@@ -48,8 +48,8 @@
       {
         "pagePath": "pages/shopping/shopping",
         "text": "购物",
-        "iconPath": "/assets/tab/shop.png",
-        "selectedIconPath": "/assets/tab/shop-active.png"
+        "iconPath": "/assets/tab/shopping.png",
+        "selectedIconPath": "/assets/tab/shopping-active.png"
       },
       {
         "pagePath": "pages/mine/mine",

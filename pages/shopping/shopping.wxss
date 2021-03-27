@@ -32,3 +32,16 @@
   color: var(--color-primary);
 }
 
+.fixed-cart {
+  position: fixed;
+  right: 30rpx;
+  bottom: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: rgba(0,0,0, .2);
+}
+.fixed-cart-iamge {
+  width: 80rpx;
+  height: 80rpx;
+}

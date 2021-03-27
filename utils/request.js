@@ -40,7 +40,7 @@ const clearBlank = function (data) {
 const addToken = function (params, url) {
   const withoutToken = ['WX/WXLogin', 'Member/SendSms', 'Member/Register'];
   if (withoutToken.indexOf(url) < 0) {
-    params.session_key = store.data.token || undefined;
+    params.userToken = store.data.token || undefined;
     return !!store.data.token
   }
   return true

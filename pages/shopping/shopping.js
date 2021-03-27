@@ -44,6 +44,10 @@ create.Page(store, {
 
   toDetail(e) {
     wxUtils.backOrNavigate(`/pages/goodsDetail/goodsDetail?id=${Math.random()}`)
+  },
+
+  toCart() {
+    wxUtils.backOrNavigate(`/pages/car/car?id=${Math.random()}`)
   }
 
 });

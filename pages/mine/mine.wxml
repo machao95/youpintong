@@ -3,7 +3,8 @@
     <view class="login-box" wx:if="{{!$.token}}">
         <image class="account-image" src="/assets/images/account.png"></image>
         <view class="login-tip">请点击下方按钮进行登录</view>
-        <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="handleLogin" class="login-btn">登录</button>
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+        <button wx:else open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo" class="login-btn">登录</button>
     </view>
 
     <block wx:else>
