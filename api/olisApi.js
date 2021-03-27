@@ -8,6 +8,22 @@ import {formatDate} from "../utils/tools";
 const regeneratorRuntime = require('../libs/runtime.js');
 module.exports = {
 
+    // 首页油价
+    async getOilInfoList(params) {
+        Tips.loading();
+        const data = await request.get('oil/info/list', params);
+        Tips.loaded();
+        return data
+    },
+
+    // 油品列表
+    async getOilsPage(params) {
+        Tips.loading();
+        const data = await request.get('oil/info/page', params);
+        Tips.loaded();
+        return data
+    },
+
     // 提交申报
     async addApply(data) {
         Tips.loading('正在提交');

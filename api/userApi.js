@@ -7,6 +7,7 @@ import {formatDate} from "../utils/tools";
 
 const regeneratorRuntime = require('../libs/runtime.js');
 const app = getApp();
+
 module.exports = {
 
   //
@@ -20,14 +21,25 @@ module.exports = {
   },
 
   // 登录
-  async login(data) {
+  async login(params) {
     Tips.loading('正在登录');
-    const res = await request.get('auth/session', data);
+    const data = await request.get('auth/session', params);
     Tips.loaded();
-    // const {success, errMsg} = ToOperationResult(res, {}, ["0", "-1002", "-1003"]);
-    console.log(res, '0');
-    // if (!success) Tips.info({title: '错误', content: errMsg});
-    return res.data
+    return data
+  },
+
+  // 更新用户
+  async updateUser(params) {
+    const data = await request.post('auth/updateUser', params);
+    return data
+  },
+
+  //
+  async getUserDetail(params) {
+    Tips.loading('获取用户信息');
+    const data = await request.get('auth/getUserInfo', params);
+    Tips.loaded();
+    return data
   },
 
   async getUserInfo(params) {

@@ -44,6 +44,38 @@
 
         <view class="panel">
             <view class="panel-header row-between">
+                <text>我的订单</text>
+                <view class="row-between more" data-status="all" bind:tap="toOrderList">
+                    <text>查看全部</text>
+                    <van-icon color="#999" name="arrow"></van-icon>
+                </view>
+            </view>
+            <view class="panel-body row-around">
+
+                <view class="order-item column-center" data-status="wait_pay" bind:tap="toOrderList">
+                    <image class="order-image" src="/assets/icon/wait_pay.png"></image>
+                    <view class="order-text">待付款</view>
+                </view>
+
+                <view class="order-item column-center" data-status="wait_send" bind:tap="toOrderList">
+                    <image class="order-image" src="/assets/icon/wait_send.png"></image>
+                    <view class="order-text">待发货</view>
+                </view>
+
+                <view class="order-item column-center" data-status="wait_receive" bind:tap="toOrderList">
+                    <image class="order-image" src="/assets/icon/wait_receive.png"></image>
+                    <view class="order-text">待收货</view>
+                </view>
+
+                <view class="order-item column-center" data-status="complete" bind:tap="toOrderList">
+                    <image class="order-image" src="/assets/icon/complete.png"></image>
+                    <view class="order-text">已完成</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="panel">
+            <view class="panel-header row-between">
                 <text>积分记录</text>
                 <view class="row-between more"  bind:tap="toGradeRecord">
                     <text>查看全部记录</text>

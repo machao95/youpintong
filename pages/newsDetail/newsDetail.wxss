@@ -44,19 +44,17 @@
 }
 
 .comment-header {
-  padding: 20rpx 20rpx 0;
+  padding: 10rpx;
   border-bottom: 1px solid var(--color-border);
 }
 .comment-title {
-  width: 100rpx;
   text-align: center;
   font-size: var(--fontSize-xl);
   color: red;
-  border-bottom: 2px solid red;
 }
 
 .scroll-view {
-  height: 70vh;
+  height: calc(70vh - 40rpx);
 }
 
 .comment-body {
@@ -66,8 +64,10 @@
 .comment-item {
   margin-bottom: 20rpx;
   overflow: hidden;
-  border-bottom: 1px solid var(--color-border);
 
+}
+.comment-item:last-child {
+  border: none;
 }
 
 .comment-user {
@@ -75,8 +75,8 @@
 }
 
 .user-image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
   border-radius: 50%;
 }
 
@@ -90,6 +90,7 @@
 .comment-content {
   margin-left: 60rpx;
   padding-bottom: 10rpx;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .comment-write {
@@ -101,6 +102,7 @@
   padding: 20rpx;
   height: calc(100% - 40rpx);
   background: #f0f0f0;
+  font-size: var(--fontSize-xs);
 }
 
 .comment-btn {
@@ -110,5 +112,10 @@
   background: #ff6b6b;
   color: #FFFFFF;
   line-height: 8vh;
+}
+
+.op-text {
+  font-size: var(--fontSize-xs);
+  padding-left: 5rpx;
 }
 

@@ -1,0 +1,12 @@
+
+<view class="order-item">
+  <goods-item showNum></goods-item>
+  <view class="order-price row-end">
+    <view class="total-price">总价: ￥21.90</view>
+    <view class="pay-price">实付款: ￥21.90</view>
+  </view>
+  <view class="order-op row-end">
+    <view class="btn btn-normal">确认收货</view>
+    <view class="btn btn-danger">取消订单</view>
+  </view>
+</view>

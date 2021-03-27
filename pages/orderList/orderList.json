@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tabs": "/components/vant/tabs/index",
+    "van-tab": "/components/vant/tab/index",
+    "van-icon": "/components/vant/icon/index",
+    "list-cell": "/components/list-cell/list-cell",
+    "order-item": "/components/order-item/order-item"
+  },
+  "navigationBarTitleText": "我的订单"
+}

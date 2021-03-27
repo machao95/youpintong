@@ -2,7 +2,7 @@ import wxUtils from '../../utils/wxUtils';
 Component({
   properties: {
     type: {type: String, value: 'normal'}, // normal or first
-    detail: {type: Object, value: {id: 999} }
+    detail: {type: Object, value: {} }
   },
   data: {
 
@@ -11,20 +11,20 @@ Component({
   methods: {
     handleDetail() {
       // const {id} = this.data.detail;
-      wxUtils.backOrNavigate(`/pages/newsDetail/newsDetail?id=${56}`);
+      wxUtils.backOrNavigate(`/pages/newsDetail/newsDetail?id=${this.data.detail.id}`);
       // this.triggerEvent('detail', this.data.detail)
     },
 
     handleCollect() {
-      this.triggerEvent('collect', {newsId: this.data.detail.id})
+      this.triggerEvent('collect', this.data.detail)
     },
 
     handleComment() {
-      this.triggerEvent('comment', {newsId: this.data.detail.id})
+      this.triggerEvent('comment', this.data.detail)
     },
 
     handleThumbs() {
-      this.triggerEvent('thumbs', {newsId: this.data.detail.id})
+      this.triggerEvent('thumbs', this.data.detail)
     }
   }
 

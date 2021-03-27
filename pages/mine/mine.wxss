@@ -135,3 +135,19 @@ page {
   margin: 20rpx;
 }
 
+
+.order-item {
+
+}
+
+.order-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.order-text {
+  margin-top: 10rpx;
+  text-align: center;
+  color: #666666;
+  font-size: var(--fontSize-xs);
+}

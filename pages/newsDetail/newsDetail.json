@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-icon": "/components/vant/icon/index",
-    "news-item": "/components/news-item/news-item"
+    "news-item": "/components/news-item/news-item",
+    "van-popup": "/components/vant/popup/index"
   },
   "navigationBarTitleText": "详情"
 }

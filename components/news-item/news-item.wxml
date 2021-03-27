@@ -6,53 +6,59 @@
     <view class="news-body row-between" bind:tap="handleDetail">
 
         <view class="news-content column-between">
-            <view class="news-title">油价调整最新消息：油价再次以大涨开局 油价还会继续上涨?</view>
-            <view class="news-date">2020-12-19 08:45 来源: 综投网</view>
+            <view class="news-title">{{detail.articleTitle}}</view>
+            <view class="news-date">{{detail.createTime}} 来源: {{detail.articleSource}}</view>
         </view>
 
-        <image class="news-img" src="https://img.xiaopiu.com/userImages/img539817678f04548.png"></image>
+        <image class="news-img" src="{{detail.articleImg}}"></image>
 
     </view>
 
     <view class="news-footer row-between">
 
         <view class="news-op row-between" bind:tap="handleCollect">
-            <van-icon name="star-o" size="1em" />
-            <text>收藏</text>
+            <van-icon name="star" size="1em" color="#E6A23C" wx:if="{{detail.collect}}" />
+            <van-icon name="star-o" size="1em" wx:else />
+            <text>{{detail.collect ? '已收藏' : '收藏'}}</text>
         </view>
 
         <view class="news-op row-between" bind:tap="handleComment">
             <van-icon name="comment-o" size="1.1em" />
-            <text>25</text>
+            <text> {{detail.commentCount}}</text>
         </view>
 
         <view class="news-op row-between" bind:tap="handleThumbs">
-            <van-icon name="good-job-o"  size="1.1em" />
-            <text>36</text>
+            <van-icon name="good-job" size="1.1em" color="#E6A23C" wx:if="{{detail.up}}" />
+            <van-icon name="good-job-o" size="1.1em" wx:else />
+            <text>{{detail.upCount || 0}}</text>
         </view>
 
     </view>
 </view>
 
-<view wx:else class="first-news" bind:tap="handleDetail">
-    <view class="first-title">迎接嫦娥五号凯旋，BJ40“刀锋双雄”首次亮相!</view>
-    <image class="first-image" src="https://img.xiaopiu.com/userImages/img82491767fc1ec00.png"></image>
-    <view class="first-desc">2020-12-17 11:47:35 | 来源：中国汽车新闻网</view>
+<view wx:else class="first-news">
+    <view bind:tap="handleDetail">
+        <view class="first-title">{{detail.articleTitle}}</view>
+        <image class="first-image" src="{{detail.articleImg}}"></image>
+        <view class="first-desc">{{detail.createTime}} | 来源：{{detail.articleSource}}</view>
+    </view>
     <view class="news-footer row-between">
 
         <view class="news-op row-between" bind:tap="handleCollect">
-            <van-icon name="star-o" size="1em" />
-            <text>收藏</text>
+            <van-icon name="star" size="1em" color="#E6A23C" wx:if="{{detail.collect}}" />
+            <van-icon name="star-o" size="1em" wx:else />
+            <text>{{detail.collect ? '已收藏' : '收藏'}}</text>
         </view>
 
         <view class="news-op row-between" bind:tap="handleComment">
             <van-icon name="comment-o" size="1.1em" />
-            <text>25</text>
+            <text>{{detail.commentCount}}</text>
         </view>
 
         <view class="news-op row-between" bind:tap="handleThumbs">
-            <van-icon name="good-job-o"  size="1.1em" />
-            <text>36</text>
+            <van-icon name="good-job" size="1.1em" color="#E6A23C" wx:if="{{detail.up}}" />
+            <van-icon name="good-job-o" size="1.1em" wx:else />
+            <text>{{detail.upCount || 0}}</text>
         </view>
 
     </view>

@@ -1,0 +1,70 @@
+
+<import src='../../templates/empty/empty.wxml' />
+
+<view>
+
+  <van-tabs active="{{status}}" color="#ff6b6b" nav-class="tabs" bind:change="getOrderList">
+
+    <van-tab title="{{'全部 (' + (all.length || '0') + ')' }}" name="all">
+
+      <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
+        <view class="panel">
+          <order-item wx:for="{{all}}" wx:key="id" detail="{{item}}"></order-item>
+        </view>
+      </scroll-view>
+
+      <template is="empty" wx:else data="{{emptyTip: '暂无订单信息'}}"></template>
+
+    </van-tab>
+
+    <van-tab title="{{'待付款 (' + (wait_pay.length || '0') + ')' }}" name="wait_pay">
+
+      <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
+        <view class="panel">
+          <order-item wx:for="{{wait_pay}}" wx:key="id" detail="{{item}}"></order-item>
+        </view>
+      </scroll-view>
+
+      <template is="empty" wx:else data="{{emptyTip: '暂无订单信息'}}"></template>
+
+    </van-tab>
+
+    <van-tab title="{{'待发货 (' + (wait_send.length || '0') + ')' }}" name="wait_send">
+
+      <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
+        <view class="panel">
+          <order-item wx:for="{{wait_send}}" wx:key="id" detail="{{item}}"></order-item>
+        </view>
+      </scroll-view>
+
+      <template is="empty" wx:else data="{{emptyTip: '暂无订单信息'}}"></template>
+
+    </van-tab>
+
+    <van-tab title="{{'待收货 (' + (wait_receive.length || '0') + ')' }}" name="wait_receive">
+
+      <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
+        <view class="panel">
+          <order-item wx:for="{{wait_receive}}" wx:key="id" detail="{{item}}"></order-item>
+        </view>
+      </scroll-view>
+
+      <template is="empty" wx:else data="{{emptyTip: '暂无订单信息'}}"></template>
+
+    </van-tab>
+
+    <van-tab title="{{'已完成 (' + (complete.length || '0') + ')' }}" name="complete">
+
+      <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
+        <view class="panel">
+          <order-item wx:for="{{complete}}" wx:key="id" detail="{{item}}"></order-item>
+        </view>
+      </scroll-view>
+
+      <template is="empty" wx:else data="{{emptyTip: '暂无订单信息'}}"></template>
+
+    </van-tab>
+
+  </van-tabs>
+
+</view>

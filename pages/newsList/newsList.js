@@ -3,6 +3,8 @@ import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
 import newsApi from '../../api/newsApi'
+import {formatDate} from "../../utils/tools";
+import {LIKE_KIND, LIKE_TYPE} from "../../utils/constant";
 
 const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
@@ -10,40 +12,66 @@ create.Page(store, {
   use: ['userInfo', 'token'],
 
   data: {
-    userInfo: {},
     status: 'price',
     newsList: {
-      price: [1,2,3,4],
-      car: [2,3,4,5,4],
+      'price': [], // 油价
+      'car': [], // 汽车
       history: [2,45,3,3,45,3,5,36,3,56]
     }
   },
 
   onShow() {
-    // this.getAddressList()
+    this.getNewsList();
   },
 
-  async getNewsList() {
-    return;
-    const addressList = newsApi.getAddressList({});
-    this.setData({addressList});
+  changeTab(e) {
+    const status = e.detail.name;
+    this.setData({status});
+    this.getNewsList(status)
   },
 
-  async handleDefault(e) {
-    const r = await userApi.setDefaultAddress({});
-    this.getAddressList();
+  async getNewsList(status) {
+    const s = status || this.data.status;
+    const articleKind = s === 'price' ? 1 : 2;
+    const data = await newsApi.getNewsList({
+      articleKind: articleKind,
+      page: 1,
+      pageSize: 999,
+      userId: this.store.data.userInfo.userId
+    });
+    console.log(data, '90');
+    data.data.forEach(item => {
+      item.createTime = formatDate(new Date(item.createTime), 'YYYY-MM-DD HH:mm:ss')
+    });
+    data && this.setData({
+      ['newsList.' + s]: data.data
+    });
   },
 
-  handleCollect(e) {
-    console.log(e)
+  async handleCollect(e) {
+    const method = e.detail.collect ? 'cancelCollectUp' : 'saveCollectUp';
+    const r = await newsApi[method]({
+      userId: this.store.data.userInfo.userId,
+      likeId: e.detail.id,
+      likeKind: LIKE_KIND.COLLECT,
+      likeType: LIKE_TYPE.ARTICLE
+    });
+    r && this.getNewsList();
+  },
+
+  async handleThumbs(e) {
+    const method = e.detail.up ? 'cancelCollectUp' : 'saveCollectUp';
+    const r = await newsApi[method]({
+      userId: this.store.data.userInfo.userId,
+      likeId: e.detail.id,
+      likeKind: LIKE_KIND.UP,
+      likeType: LIKE_TYPE.ARTICLE
+    });
+    r && this.getNewsList();
   },
 
   handleComment(e) {
-    console.log(e, 'comment');
+    wxUtils.backOrNavigate(`/pages/newsDetail/newsDetail?id=${e.detail.id}&showComment=true`);
   },
-
-  handleThumbs() {
-    this.triggerEvent('thumbs', this.detail.id)
-  }
 
 });

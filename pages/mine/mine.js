@@ -8,7 +8,6 @@ const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
   use: ['userInfo', 'token'],
   data: {
-    userInfo: {},
     canIUseGetUserProfile: false
   },
 
@@ -35,8 +34,7 @@ create.Page(store, {
   },
 
   async doLogin(userInfo) {
-    // 保存用户信息
-    this.store.data.userInfo = {...userInfo, ...this.store.data.userInfo};
+    console.log(userInfo, 'user');
     wx.setStorageSync('userInfo', this.store.data.userInfo);
     // 登录
     const {code} = await wxUtils.wxFuncSync('login');
@@ -46,48 +44,28 @@ create.Page(store, {
       // 保存token
       this.store.data.token = data.userToken;
       wx.setStorageSync('token', data.userToken);
-      // 保存用户信息到数据库
-      // userApi.saveUserInfo(userInfo)
-    }
-  },
-
-  async handleLogin(e) {
-    const res = await wxUtils.wxFuncSync('getUserProfile');
-    console.log(res);
-    return;
-    const {encryptedData, iv, signature, userInfo} = e.detail;
-    if (userInfo) {
       // 保存用户信息
-      this.store.data.userInfo = {...userInfo, ...this.store.data.userInfo};
-      wx.setStorageSync('userInfo', this.store.data.userInfo);
-      // 获取code
-      const {code} = await wxUtils.wxFuncSync('login');
-      if (code) {
-        // 登录
-        const data = await userApi.login({code: code});
-        if (data) {
-          // 保存token
-          this.store.data.token = data.userToken;
-          wx.setStorageSync('token', data.userToken);
-          //
-          // this.store.data.userInfo.openId = res.openid;
-          // this.store.data.userInfo.mobile = res.mobile;
-          // wx.setStorageSync('userInfo', this.store.data.userInfo);
-          // 获取用户信息
-          const raw = await wxUtils.wxFuncSync('getUserInfo');
-          console.log(raw, 'raw')
-          const userInfo = await userApi.getUserInfo({
-            openId: 'odVCA5X80oxVG-K27NyPw-pRM3Y4',
-            encryptedData: raw.encryptedData,
-            iv: raw.iv
-          });
-          console.log(userInfo)
-        }
-      } else {
-        Tips.error('微信登录失败')
+      const user = {
+        ...this.store.data.userInfo,
+        ...userInfo,
+        openId: data.openId,
+        userId: data.user ? data.user.id : null
+      };
+      // 更新用户
+      if (!data.user) {
+        await userApi.updateUser({
+          openId: data.openId,
+          ...userInfo,
+          portrait: userInfo.avatarUrl
+        });
+        // 获取id
+        const userInfoInDb = await userApi.getUserDetail({
+          openId: data.openId
+        });
+        userInfoInDb && (user.userId = userInfoInDb.id)
       }
-    } else {
-      Tips.error('拒绝授权')
+      this.store.data.userInfo = user;
+      wx.setStorageSync('userInfo', user);
     }
   },
 
@@ -118,5 +96,10 @@ create.Page(store, {
   toFeedBack() {
     wxUtils.backOrNavigate('/pages/feedback/feedback')
   },
+
+  toOrderList(e) {
+    const {status} = e.currentTarget.dataset;
+    wxUtils.backOrNavigate(`/pages/orderList/orderList?status=${status}`)
+  }
 
 });

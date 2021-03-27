@@ -14,6 +14,7 @@
     "pages/shopping/shopping",
     "pages/goodsDetail/goodsDetail",
     "pages/orderConfirm/orderConfirm",
+    "pages/orderList/orderList",
     "pages/car/car"
   ],
   "window": {

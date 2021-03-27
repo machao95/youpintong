@@ -38,7 +38,7 @@ const clearBlank = function (data) {
 };
 
 const addToken = function (params, url) {
-  const withoutToken = ['WX/WXLogin', 'Member/SendSms', 'Member/Register'];
+  const withoutToken = ['auth/session'];
   if (withoutToken.indexOf(url) < 0) {
     params.userToken = store.data.token || undefined;
     return !!store.data.token
@@ -52,29 +52,31 @@ const addToken = function (params, url) {
  * @returns {*}
  */
 const isSuccess = function (res) {
-  return res && res.statusCode == 200;
-  // const wxCode = res.statusCode;
-  // if (wxCode === 200) {
-  //   const wxData = res.data;
-  //   return (wxData && wxData.code === 200);
-  // } else if (wxCode === 500) {
-  //   Tips.error(res.data && res.data.data ? res.data.data.message : '请求错误');
-  //   return false;
-  // } else if (wxCode === 400){
-  //   const message = res.data && res.data.data ? res.data.data.message : '请求错误';
-  //   try {
-  //     let msg = JSON.parse(message);
-  //     Tips.error(msg[0] ? msg[0].message : '请求错误');
-  //   } catch (e) {
-  //     Tips.error(message);
-  //   }
-  //   return false
-  // } else if (wxCode === 403){
-  //   Tips.error('请重试一次');
-  //   return false
-  // } else {
-  //   return false
-  // }
+  // return res && res.statusCode == 200;
+  const wxCode = res.statusCode;
+  if (wxCode === 200) {
+    const wxData = res.data;
+    if (wxData && wxData.code === 200) {return true}
+    Tips.error(wxData && wxData.msg ? wxData.msg : '请求错误');
+    return false;
+  } else if (wxCode === 500) {
+    Tips.error(res.data && res.data.data ? res.data.data.message : '请求错误');
+    return false;
+  } else if (wxCode === 400){
+    const message = res.data && res.data.data ? res.data.data.message : '请求错误';
+    try {
+      let msg = JSON.parse(message);
+      Tips.error(msg[0] ? msg[0].message : '请求错误');
+    } catch (e) {
+      Tips.error(message);
+    }
+    return false
+  } else if (wxCode === 403){
+    Tips.error('请重试一次');
+    return false
+  } else {
+    return false
+  }
 };
 
 /**
@@ -129,9 +131,9 @@ export default {
     loading && Tips.loaded();
     // console.log(res, 0);
     if (isSuccess(res)) {
-      return res.data;
+      return res.data.data;
     } else {
-      exception(res);
+      return null
     }
   },
 

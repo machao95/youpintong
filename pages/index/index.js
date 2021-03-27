@@ -3,6 +3,7 @@ import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
 import commonApi from '../../api/commonApi';
+import oilsApi from '../../api/olisApi';
 
 var amapFile = require('../../libs/amap-wx.js');
 const regeneratorRuntime = require('../../libs/runtime.js');
@@ -12,9 +13,9 @@ create.Page(store, {
   data: {
     today: {},
     city: {},
-    userInfo: {},
     region: [],
-    noticeList: [{url: 'https://img.xiaopiu.com/userImages/img390817675385dc8.jpg'}, {url: '/assets/images/index.png'}],
+    noticeList: [],
+    oilInfoList: [],
     scrollAnimate: true,
     activeNoticeIndex: 0, // 当前显示的通知索引
     activeNotice: undefined // 当前显示的通知id
@@ -36,6 +37,8 @@ create.Page(store, {
       city
     });
     this.getCityWeather(city.name);
+    this.getBannerInfoList();
+    this.getOilInfoList();
   },
 
   onHide() {
@@ -58,6 +61,20 @@ create.Page(store, {
     // const r = await noticeApi.weather(city.replace('市', ''));
     // console.log(r);
   },
+
+  async getBannerInfoList() {
+    const data = await commonApi.getBannerInfoList();
+    if (data) this.setData({noticeList: data})
+  },
+
+  async getOilInfoList() {
+    let data = await oilsApi.getOilInfoList();
+    data.forEach(item => {
+      item.oilUp = Number(item.oilUp)
+    });
+    if (data) this.setData({oilInfoList: data})
+  },
+
 
   handleRegionChange(e) {
     console.log(e);

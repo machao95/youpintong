@@ -6,9 +6,9 @@
 <view class="header">
     <swiper indicator-dots="{{true}}"
             autoplay="{{true}}" interval="{{3000}}">
-        <block wx:for="{{noticeList}}" wx:key="url">
+        <block wx:for="{{noticeList}}" wx:key="id">
             <swiper-item>
-                <image src="{{item.url}}" class="swiper-img"></image>
+                <image src="{{item.imgUrl}}" class="swiper-img"></image>
             </swiper-item>
         </block>
     </swiper>
@@ -38,28 +38,28 @@
         <view class="td td-center">油价(元/升)</view>
         <view class="td td-right">涨幅</view>
     </view>
-    <view class="row-between t-body">
-        <view class="td td-left">98#汽油</view>
-        <view class="td td-center">￥6.45</view>
+    <view class="row-between t-body" wx:for="{{oilInfoList}}" wx:key="id">
+        <view class="td td-left">{{item.oilName}}</view>
+        <view class="td td-center">￥{{item.oilPrice}}</view>
         <view class="td td-right">
-            <text class="up">+0.14</text>
+            <text class="{{item.oilUp >= 0 ? 'up' : 'down'}}">{{item.oilUp >= 0 ? '+' : '-'}}{{item.oilUp}}</text>
         </view>
     </view>
-    <view class="row-between t-body">
-        <view class="td td-left">95#汽油</view>
-        <view class="td td-center">￥6.45</view>
-        <view class="td td-right">
-            <text class="up">+0.14</text>
-        </view>
-    </view>
-    <view class="row-between t-body">
-        <view class="td td-left">93#汽油</view>
-        <view class="td td-center">￥6.45</view>
-        <view class="td td-right"><text class="up">+0.14</text></view>
-    </view>
-    <view class="row-between t-body">
-        <view class="td td-left">0#柴油</view>
-        <view class="td td-center">￥6.45</view>
-        <view class="td td-right"><text class="up">+0.14</text></view>
-    </view>
+<!--    <view class="row-between t-body">-->
+<!--        <view class="td td-left">95#汽油</view>-->
+<!--        <view class="td td-center">￥6.45</view>-->
+<!--        <view class="td td-right">-->
+<!--            <text class="up">+0.14</text>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="row-between t-body">-->
+<!--        <view class="td td-left">93#汽油</view>-->
+<!--        <view class="td td-center">￥6.45</view>-->
+<!--        <view class="td td-right"><text class="up">+0.14</text></view>-->
+<!--    </view>-->
+<!--    <view class="row-between t-body">-->
+<!--        <view class="td td-left">0#柴油</view>-->
+<!--        <view class="td td-center">￥6.45</view>-->
+<!--        <view class="td td-right"><text class="up">+0.14</text></view>-->
+<!--    </view>-->
 </view>
