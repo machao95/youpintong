@@ -1,19 +1,24 @@
 
 <view class="container">
 
-  <image class="main-pic" src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+  <image class="main-pic" src="{{goodsDetail.goodsImg}}"></image>
 
   <view class="card">
 
-    <view class="price-box row">
-      <text class="price-now-num">￥75</text>
+    <view class="price-box row" wx:if="{{goodsType === 'normal'}}">
+      <text class="price-now-num">￥{{goodsDetail.goodsPrice}}</text>
       <view class="price-origin">
         <text>价格</text>
-        <text class="price-origin-num">￥120</text>
+        <text class="price-origin-num">￥{{goodsDetail.goodsOriginPrice}}</text>
       </view>
     </view>
 
-    <view class="title">户室外不锈钢配电箱监控箱控制箱电控箱.防水箱基业箱300*400*180 </view>
+    <view class="price-box row" wx:else>
+      <text class="price-now-num">{{goodsDetail.goodsIntegral}}</text>
+      <text style="color: #999;">分</text>
+    </view>
+
+    <view class="title">{{goodsDetail.goodsName}} {{goodsDetail.goodsModel}} </view>
 
   </view>
 
@@ -22,10 +27,10 @@
     <view class="desc row-between">
       <view class="row">
         <text class="pr15">发货:</text>
-        <text>浙江温州</text>
+        <text>{{goodsDetail.goodsAddress}}</text>
         <view class="line"></view>
         <text class="pr15">快递:</text>
-        <text class="pr15">15.00元</text>
+        <text class="pr15">{{goodsDetail.goodsCost}}元</text>
       </view>
       <text>月销量 1000+</text>
     </view>
@@ -33,47 +38,61 @@
     <view class="desc row-between" style="padding-top: 40rpx"  bind:tap="showParamPanel">
       <view>
         <text class="pr15">参数:</text>
-        <text>xx品牌xx型号</text>
+        <text>品牌、型号、试用对象</text>
       </view>
       <van-icon name="arrow" color="#666" />
     </view>
 
   </view>
 
-  <view class="detail-title-box row-center">
-    <view class="title-line"></view>
-    <view class="detail-title">宝贝详情</view>
-    <view class="title-line"></view>
-  </view>
+<!--  <view class="detail-title-box row-center">-->
+<!--    <view class="title-line"></view>-->
+<!--    <view class="detail-title">宝贝详情</view>-->
+<!--    <view class="title-line"></view>-->
+<!--  </view>-->
 
-  <view class="detail-image-box">
-  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>
-  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>
-  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
-  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
-  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>
+<!--  <view class="detail-image-box">-->
+<!--  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>-->
+<!--  <image src="https://img.xiaopiu.com/userImages/img525817678d87788.jpg"></image>-->
+<!--  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>-->
+<!--  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>-->
+<!--  <image src="https://img.xiaopiu.com/userImages/img4921784dd34250.jpg"></image>-->
 
-  </view>
+<!--  </view>-->
 
 
 
 </view>
 
-<view class="footer-box">
+<view class="footer-box" wx:if="{{goodsType === 'normal'}}">
   <view class="footer row-between">
     <view class="op row-around">
-      <view class="icon column-center" bind:tap="handleCollect">
+      <view class="icon" bind:tap="handleCollect">
+        <view wx:if="{{collect}}" class="column-center">
+          <van-icon name="star" size="1.2em" color="#E6A23C"/>
+          <text class="icon-text">已收藏</text>
+        </view>
+        <view wx:else class="column-center">
           <van-icon name="star-o" size="1.2em"/>
           <text class="icon-text">收藏</text>
+        </view>
       </view>
-      <view class="icon column-center" bind:tap="handleCar">
+      <view class="icon column-center" bind:tap="toCar">
         <van-icon name="cart-o" size="1.2em"/>
         <text class="icon-text">购物车</text>
       </view>
     </view>
     <view class="btns row-between">
-      <view class="btn toCar">加入购物车</view>
+      <view class="btn toCar" bind:tap="addIntoCar">加入购物车</view>
       <view class="btn buy" bind:tap="handleBuy">立即购买</view>
+    </view>
+  </view>
+</view>
+
+<view class="footer-box" wx:else>
+  <view class="footer row-end">
+    <view class="btns row-end">
+      <view class="btn buy" bind:tap="handleExchange">立即兑换</view>
     </view>
   </view>
 </view>
@@ -90,15 +109,15 @@
     <view class="param-title">产品参数</view>
     <view class="param-item row">
       <view class="param-label">品牌</view>
-      <view class="param-value">老板电器</view>
+      <view class="param-value">{{goodsDetail.goodsBrand}}</view>
     </view>
     <view class="param-item row">
       <view class="param-label">型号</view>
-      <view class="param-value">100*200*30</view>
+      <view class="param-value">{{goodsDetail.goodsModel}}</view>
     </view>
     <view class="param-item row">
       <view class="param-label">适用对象</view>
-      <view class="param-value">市内</view>
+      <view class="param-value">{{goodsDetail.goodsObject}}</view>
     </view>
   </view>
 </van-popup>

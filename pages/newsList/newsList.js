@@ -2,7 +2,8 @@ import create from '../../libs/create'
 import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
-import newsApi from '../../api/newsApi'
+import newsApi from '../../api/newsApi';
+import userApi from '../../api/userApi';
 import {formatDate} from "../../utils/tools";
 import {LIKE_KIND, LIKE_TYPE} from "../../utils/constant";
 
@@ -21,7 +22,12 @@ create.Page(store, {
   },
 
   onShow() {
-    this.getNewsList();
+
+    if (!this.store.data.token) {
+      wxUtils.backOrNavigate('/pages/mine/mine')
+    } else {
+      this.getNewsList();
+    }
   },
 
   changeTab(e) {
@@ -50,7 +56,7 @@ create.Page(store, {
 
   async handleCollect(e) {
     const method = e.detail.collect ? 'cancelCollectUp' : 'saveCollectUp';
-    const r = await newsApi[method]({
+    const r = await userApi[method]({
       userId: this.store.data.userInfo.userId,
       likeId: e.detail.id,
       likeKind: LIKE_KIND.COLLECT,
@@ -61,7 +67,7 @@ create.Page(store, {
 
   async handleThumbs(e) {
     const method = e.detail.up ? 'cancelCollectUp' : 'saveCollectUp';
-    const r = await newsApi[method]({
+    const r = await userApi[method]({
       userId: this.store.data.userInfo.userId,
       likeId: e.detail.id,
       likeKind: LIKE_KIND.UP,

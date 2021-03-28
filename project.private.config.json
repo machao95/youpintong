@@ -76,6 +76,30 @@
         {
           "name": "pages/car/car",
           "pathName": "pages/car/car",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderList/orderList",
+          "pathName": "pages/orderList/orderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/oils/oils",
+          "pathName": "pages/oils/oils",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/addressList/addressList",
+          "pathName": "pages/addressList/addressList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/integralGoods/integralGoods",
+          "pathName": "pages/integralGoods/integralGoods",
           "scene": null
         }
       ]

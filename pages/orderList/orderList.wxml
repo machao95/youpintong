@@ -9,7 +9,7 @@
 
       <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
         <view class="panel">
-          <order-item wx:for="{{all}}" wx:key="id" detail="{{item}}"></order-item>
+          <order-item wx:for="{{all}}" wx:key="id" detail="{{item}}" bind:changeState="changeState"></order-item>
         </view>
       </scroll-view>
 
@@ -21,7 +21,7 @@
 
       <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
         <view class="panel">
-          <order-item wx:for="{{wait_pay}}" wx:key="id" detail="{{item}}"></order-item>
+          <order-item wx:for="{{wait_pay}}" wx:key="id" detail="{{item}}" bind:changeState="changeState"></order-item>
         </view>
       </scroll-view>
 
@@ -33,7 +33,7 @@
 
       <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
         <view class="panel">
-          <order-item wx:for="{{wait_send}}" wx:key="id" detail="{{item}}"></order-item>
+          <order-item wx:for="{{wait_send}}" wx:key="id" detail="{{item}}" bind:changeState="changeState"></order-item>
         </view>
       </scroll-view>
 
@@ -45,7 +45,7 @@
 
       <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
         <view class="panel">
-          <order-item wx:for="{{wait_receive}}" wx:key="id" detail="{{item}}"></order-item>
+          <order-item wx:for="{{wait_receive}}" wx:key="id" detail="{{item}}" bind:changeState="changeState"></order-item>
         </view>
       </scroll-view>
 
@@ -57,7 +57,7 @@
 
       <scroll-view scroll-y class="scroll-panel" wx:if="{{all.length}}">
         <view class="panel">
-          <order-item wx:for="{{complete}}" wx:key="id" detail="{{item}}"></order-item>
+          <order-item wx:for="{{complete}}" wx:key="id" detail="{{item}}" bind:changeState="changeState"></order-item>
         </view>
       </scroll-view>
 

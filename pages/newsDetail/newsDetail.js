@@ -3,6 +3,7 @@ import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
 import newsApi from '../../api/newsApi';
+import userApi from '../../api/userApi';
 import {formatDate} from "../../utils/tools";
 import {LIKE_KIND, LIKE_TYPE} from "../../utils/constant";
 const wxParse = require('../../wxParse/wxParse');
@@ -88,13 +89,13 @@ create.Page(store, {
   },
 
   async getCollectUpInfo(id) {
-    const collect = await newsApi.exitCollectUp({
+    const collect = await userApi.exitCollectUp({
       userId: this.store.data.userInfo.userId,
       likeId: id,
       likeKind: LIKE_KIND.COLLECT,
       likeType: LIKE_TYPE.ARTICLE
     });
-    const up = await newsApi.exitCollectUp({
+    const up = await userApi.exitCollectUp({
       userId: this.store.data.userInfo.userId,
       likeId: id,
       likeKind: LIKE_KIND.UP,
@@ -106,12 +107,30 @@ create.Page(store, {
     })
   },
 
-  handleCollect(e) {
-    console.log(e)
+  async handleCollect(e) {
+    const method = this.data.detail.collect ? 'cancelCollectUp' : 'saveCollectUp';
+    const r = await userApi[method]({
+      userId: this.store.data.userInfo.userId,
+      likeId: this.data.detail.id,
+      likeKind: LIKE_KIND.COLLECT,
+      likeType: LIKE_TYPE.ARTICLE
+    });
+    r && this.setData({
+      ['detail.collect']: !this.data.detail.collect,
+    });
   },
 
-  handleThumbs() {
-    this.triggerEvent('thumbs', this.detail.id)
+  async handleThumbs() {
+    const method = this.data.detail.up ? 'cancelCollectUp' : 'saveCollectUp';
+    const r = await userApi[method]({
+      userId: this.store.data.userInfo.userId,
+      likeId: this.data.detail.id,
+      likeKind: LIKE_KIND.UP,
+      likeType: LIKE_TYPE.ARTICLE
+    });
+    r && this.setData({
+      ['detail.up']: !this.data.detail.up,
+    });
   }
 
 

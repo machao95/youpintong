@@ -6,11 +6,6 @@
 
   overflow: hidden;
 }
-/*
-.goods-item:last-child {
-  border-bottom: 1px solid #ccc;
-}
-*/
 
 .goods-image {
   width: 150rpx;

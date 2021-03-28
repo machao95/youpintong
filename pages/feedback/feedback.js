@@ -2,8 +2,8 @@ import create from '../../libs/create'
 import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
+import commonApi from '../../api/commonApi';
 import userApi from '../../api/userApi';
-import validate from "../../utils/validate";
 
 const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
@@ -15,29 +15,10 @@ create.Page(store, {
       problem: undefined,
       phone: undefined,
       imgUrls: []
-    },
-    userInfo: {},
-    formValue: {},
-    type: undefined,
-    fieldsConfig: [
-      {name: 'name', type: 'text', label: '收货人'},
-      {name: 'phone', type: 'text', label: '手机号码'},
-      {name: 'address', type: 'text', label: '详细地址'}
-    ]
+    }
   },
 
   maxNums: 4,
-
-  onLoad(options) {
-    this.setData({
-      formValue: this.store.data.editingAddress || {name: 'maf'},
-      type: options.type
-    });
-  },
-
-  onUnload() {
-    this.store.data.editingAddress = null
-  },
 
   // 表单change
   handleProblemChange(e) {
@@ -62,9 +43,17 @@ create.Page(store, {
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera']
     });
-    // 存入form
-    this.setData({
-      ['form.imgUrls']: this.data.form.imgUrls.concat(res.tempFilePaths)
+    const all = res.tempFiles.map(item => {
+      return commonApi.uploadImage({filePath: item.path})
+    });
+    Promise.all(all).then(results => {
+      console.log(results);
+      // 存入form
+      this.setData({
+        ['form.imgUrls']: this.data.form.imgUrls.concat(results.filter(url => !!url))
+      });
+    }).catch(e => {
+
     });
   },
 
@@ -85,9 +74,18 @@ create.Page(store, {
     })
   },
 
-  handleSubmit() {
+  async handleSubmit() {
     console.log(this.data.form);
     if (!this.data.form.problem) return Tips.info({content: '请输入您的问题或意见'});
+    const r = await userApi.feedBack({
+      userId: this.store.data.userInfo.userId,
+      opinionContent: this.data.form.problem,
+      mobile: this.data.form.phone,
+      opinionImgs: this.data.form.imgUrls.join(',')
+    });
+    if (r) {
+      Tips.success('提交成功');
+    }
   }
 
 });

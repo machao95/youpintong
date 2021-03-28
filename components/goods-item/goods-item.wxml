@@ -1,15 +1,16 @@
 
 <view class="goods-item row-between">
-    <image class="goods-image" src="https://img.xiaopiu.com/userImages/img525417678d82968.jpg"></image>
-    <view class="goods-content column">
-        <view class="goods-title">消防应急照明灯</view>
+    <image class="goods-image" src="{{detail.goodsImg}}" bind:tap="handleDetail"></image>
+    <view class="goods-content column" bind:tap="handleDetail">
+        <view class="goods-title">{{detail.goodsName}}</view>
         <view class="goods-desc">颜色分类：默认（尺寸内容见详情）</view>
     </view>
     <view class="goods-right column">
-        <view class="goods-price">￥21.9</view>
+        <view class="goods-price" wx:if="{{detail.goodsPrice}}">￥{{detail.goodsPrice}}</view>
+        <view class="goods-price" wx:if="{{detail.goodsIntegral}}">{{detail.goodsIntegral}}分</view>
         <view wx:if="{{showNumStep}}">
-            <van-stepper value="{{detail.number || 1}}" min="{{1}}" max="{{999}}" disable-input integer></van-stepper>
+            <van-stepper value="{{detail.number || 1}}" min="{{1}}" max="{{99}}" disable-input integer bind:change="handleNumChange"></van-stepper>
         </view>
-        <view class="goods-number" wx:elif="{{showNum}}">x1</view>
+        <view class="goods-number" wx:elif="{{showNum}}">x{{detail.number || 1}}</view>
     </view>
 </view>

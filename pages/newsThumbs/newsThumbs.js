@@ -15,12 +15,14 @@ create.Page(store, {
   },
 
   onShow() {
-    // this.getNewsList()
+    this.getNewsList()
   },
 
   async getNewsList() {
-    const list = newsApi.getCollection({});
-    this.setData({list});
+    const list = await newsApi.getUpList({
+      userId: this.store.data.userInfo.userId
+    });
+    this.setData({list: list || []});
   },
 
   handleDetail(e) {

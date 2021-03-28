@@ -51,13 +51,22 @@ const addToken = function (params, url) {
  * @param res
  * @returns {*}
  */
-const isSuccess = function (res) {
+const isSuccess = function (res, isUpload) {
   // return res && res.statusCode == 200;
   const wxCode = res.statusCode;
   if (wxCode === 200) {
-    const wxData = res.data;
-    if (wxData && wxData.code === 200) {return true}
-    Tips.error(wxData && wxData.msg ? wxData.msg : '请求错误');
+    let wxData = res.data;
+    if (isUpload && wxData) {
+      try {
+        wxData = JSON.parse(wxData);
+        return wxData.code === 200
+      } catch (e) {
+        return false
+      }
+    } else {
+      if (wxData && wxData.code === 200) {return true}
+      Tips.error(wxData && wxData.msg ? wxData.msg : '请求错误');
+    }
     return false;
   } else if (wxCode === 500) {
     Tips.error(res.data && res.data.data ? res.data.data.message : '请求错误');
@@ -148,7 +157,7 @@ export default {
   async upload (url, {filePath, formData}) {
     const res = await new Promise((resolve, reject) => {
       wx.uploadFile({
-        url: `${baseUrl}/${url}?session_key=${store.data.token || undefined}`,
+        url: `${baseUrl}/${url}?userToken=${store.data.token || undefined}`,
         filePath: filePath,
         name: 'file',
         formData: formData,
@@ -157,11 +166,11 @@ export default {
         }
       })
     });
-    if (isSuccess(res)) {
-      // console.log(res.data, typeof res.data)
-      return res.data;
+    if (isSuccess(res, true)) {
+      const r = JSON.parse(res.data);
+      return r.data; // url
     } else {
-      exception(res);
+      return null
     }
   }
 }

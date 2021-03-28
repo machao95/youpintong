@@ -4,7 +4,7 @@
 
     <van-cell-group>
         <van-field
-            model:value="{{ formValue.name }}"
+            model:value="{{ formValue.addressUser }}"
             placeholder="请输入收货人"
             border="{{ true }}"
             label="收货人"
@@ -12,14 +12,24 @@
             data-name="name"
         />
         <van-field
-            model:value="{{ formValue.phone }}"
+                custom-style="width: 100%"
+            model:value="{{ formValue.mobile }}"
             placeholder="请输入手机号码"
             border="{{ true }}"
             label="手机号码"
             bind:change="handlePhoneChange"
         />
+        <picker mode="region" bindchange="handleRegionChange">
+            <van-field
+                    model:value="{{ formValue.region }}"
+                    placeholder="请选择省市区"
+                    border="{{ true }}"
+                    label="省市区县"
+                    type="text"
+            />
+        </picker>
         <van-field
-            model:value="{{ formValue.address }}"
+            model:value="{{ formValue.addressDetail }}"
             placeholder="请输入详细地址"
             border="{{ true }}"
             label="详细地址"

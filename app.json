@@ -11,11 +11,15 @@
     "pages/newsList/newsList",
     "pages/newsDetail/newsDetail",
     "pages/oils/oils",
+    "pages/oilsDetail/oilsDetail",
     "pages/shopping/shopping",
     "pages/goodsDetail/goodsDetail",
     "pages/orderConfirm/orderConfirm",
     "pages/orderList/orderList",
-    "pages/car/car"
+    "pages/car/car",
+    "pages/integralRecord/integralRecord",
+    "pages/integralGoods/integralGoods",
+    "pages/settings/settings"
   ],
   "window": {
     "backgroundTextStyle": "light",

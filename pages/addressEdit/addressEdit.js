@@ -15,15 +15,16 @@ create.Page(store, {
     formValue: {},
     type: undefined,
     fieldsConfig: [
-      {name: 'name', type: 'text', label: '收货人'},
-      {name: 'phone', type: 'text', label: '手机号码'},
-      {name: 'address', type: 'text', label: '详细地址'}
+      {name: 'addressUser', type: 'text', label: '收货人'},
+      {name: 'mobile', type: 'text', label: '手机号码'},
+      {name: 'region', type: 'text', label: '省市区'},
+      {name: 'addressDetail', type: 'text', label: '详细地址'}
     ]
   },
 
   onLoad(options) {
     this.setData({
-      formValue: this.store.data.editingAddress || {name: 'maf'},
+      formValue: this.store.data.editingAddress || {},
       type: options.type
     });
   },
@@ -34,22 +35,33 @@ create.Page(store, {
 
   // 表单change
   handleNameChange(e) {
-    console.log(e);
     const value = e.detail;
     this.setData({
-      ['formValue.name']: value
+      ['formValue.addressUser']: value
     });
   },
+
   handlePhoneChange(e) {
     const value = e.detail;
     this.setData({
-      ['formValue.phone']: value
+      ['formValue.mobile']: value
     });
   },
+
+  handleRegionChange(e) {
+    const {value} = e.detail;
+    this.setData({
+      ['formValue.addressProvince']: value[0],
+      ['formValue.addressCity']: value[1],
+      ['formValue.addressArea']: value[2],
+      ['formValue.region']: value.join('/')
+    })
+  },
+
   handleAddressChange(e) {
     const value = e.detail;
     this.setData({
-      ['formValue.address']: value
+      ['formValue.addressDetail']: value
     });
   },
 
@@ -64,8 +76,17 @@ create.Page(store, {
     return validate(fields, 'address')
   },
 
-  handleSubmit() {
+  async handleSubmit() {
     if (!this.validateForm()) return false;
+    const method = this.data.type === 'edit' ? 'editAddress' : 'addAddress';
+    const r = await userApi[method]({
+      isDefault: '2', // 编辑时formValue有isDefault，此项在前保证修改时正确
+      ...this.data.formValue,
+      userId: this.store.data.userInfo.userId,
+    });
+    if (r) {
+      wxUtils.backOrNavigate('/pages/addressList/addressList')
+    }
   }
 
 });

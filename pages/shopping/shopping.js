@@ -2,7 +2,7 @@ import create from '../../libs/create'
 import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
-import userApi from '../../api/userApi';
+import goodsApi from '../../api/goodsApi';
 import validate from "../../utils/validate";
 
 const regeneratorRuntime = require('../../libs/runtime.js');
@@ -12,38 +12,44 @@ create.Page(store, {
 
   data: {
     userInfo: {},
-    typeConfig: [
-      {value: 1, label: '营业区'}, { value: 2, label: '配电室' }, { value: 3, label: '油罐区' },
-      {value: 4, label: '办公室'}, { value: 5, label: '活动室' }, { value: 6, label: '厨房用品' },
-      {value: 7, label: '卫浴用品'}, { value: 8, label: '其他' }
-    ],
+    typeConfig: [],
     activeTypeIndex: 0,
     goods: {}
   },
 
   onLoad(options) {
-    this.getGoodsList(this.data.typeConfig[0].value);
+    this.getGoodsTypeList();
   },
 
   onUnload() {
 
   },
 
+  async getGoodsTypeList() {
+    const list = await goodsApi.getGoodsTypeList();
+    this.setData({typeConfig: list || []});
+    list && list.length && this.getGoodsList(list[0].id);
+  },
+
   handleChangeType(e) {
     const index = e.detail;
     this.setData({activeTypeIndex: index});
-    this.getGoodsList(this.data.typeConfig[index].value)
+    this.getGoodsList(this.data.typeConfig[index].id)
   },
 
-  getGoodsList(typeValue) {
-    const list = [1,2,3,4,5,6,7,8,11,22,33,44,55,66].map(item => ({url: 'https://img.xiaopiu.com/userImages/img525317678d80e10.jpg'}))
+  async getGoodsList(typeValue) {
+    const list = await goodsApi.getGoodsList({
+      page: 1,
+      pageSize: 999,
+      goodsTypeId: typeValue
+    });
     this.setData({
-      ['goods.' + typeValue]: list
+      ['goods.' + typeValue]: list ? list.data : []
     })
   },
 
   toDetail(e) {
-    wxUtils.backOrNavigate(`/pages/goodsDetail/goodsDetail?id=${Math.random()}`)
+    wxUtils.backOrNavigate(`/pages/goodsDetail/goodsDetail?id=${e.currentTarget.dataset.id}`)
   },
 
   toCart() {

@@ -34,3 +34,14 @@
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
 }
+.order-header {
+  padding-bottom: 10rpx;
+}
+.order-time {
+  color: #999999;
+  font-size: var(--fontSize-xs);
+}
+.order-status {
+  color: var(--color-danger);
+  font-size: var(--fontSize-xs);
+}

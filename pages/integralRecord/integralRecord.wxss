@@ -1,0 +1,20 @@
+.container {
+  margin: 20rpx;
+}
+.f-item {
+  padding: 20rpx 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.f-date {
+  color: #999;
+  font-size: var(--fontSize-xs);
+}
+.f-text {
+  flex: 1;
+  color: #999;
+}
+.f-num {
+  padding-left: 10rpx;
+  font-size: var(--fontSize-xl);
+  color: var(--color-danger);
+}

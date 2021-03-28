@@ -68,7 +68,9 @@ create.Page(store, {
   },
 
   async getOilInfoList() {
-    let data = await oilsApi.getOilInfoList();
+    let data = await oilsApi.getOilInfoList({
+      userId: this.store.data.userInfo.userId
+    });
     data.forEach(item => {
       item.oilUp = Number(item.oilUp)
     });

@@ -19,24 +19,24 @@
 
             <view class="menu row-around">
                <view class="menu-item column-between" bind:tap="toGoodsCollection">
-                   <view>10</view>
+                   <view>{{goodsCollectCount}}</view>
                    <view>商品收藏</view>
                </view>
                 <view class="sprite"></view>
                 <view class="menu-item column-between" bind:tap="toNewsCollection">
-                    <view>10</view>
+                    <view>{{articleCollectCount}}</view>
                     <view>文章收藏</view>
                 </view>
                 <view class="sprite"></view>
                 <view class="menu-item column-between" bind:tap="toNewsThumbs">
-                    <view>10</view>
+                    <view>{{articleUpCount}}</view>
                     <view>文章点赞</view>
                 </view>
             </view>
 
-            <view class="grade row-between">
+            <view class="grade row-between" bind:tap="toIntegralGoods">
                 <image class="grade-img" src="/assets/icon/shuqian.png"></image>
-                <text class="grade-text">您有 99999 积分，可用积分兑换物品</text>
+                <text class="grade-text">您有 {{$.userInfo.integral || 0}} 积分，可用积分兑换物品</text>
                 <van-icon class="cell-icon" name="arrow"></van-icon>
             </view>
 
@@ -83,16 +83,14 @@
                 </view>
             </view>
             <view class="panel-body">
-                <view class="f-item row-between">
-                    <view class="f-date">12-09</view>
-                    <view class="f-text ellipsis">查询油价信查询油价信息获得查询油价信息获得查询油价信息获得息获得</view>
-                    <view class="f-num">+10分</view>
-                </view>
-                <view class="f-item row-between">
-                    <view class="f-date">12-09</view>
-                    <view class="f-text ellipsis">查询油价信查询油价信息获得查询油价信息获得查询油价信息获得息获得</view>
-                    <view class="f-num">+10分</view>
-                </view>
+                <block wx:if="{{integralRecord.length}}">
+                    <view class="f-item row-between" wx:for="{{integralRecord}}" wx:key="id">
+                        <view class="f-date">{{item.createTime}}</view>
+                        <view class="f-text ellipsis">{{item.integralTypeName}}</view>
+                        <view class="f-num">+{{item.integralNum}}分</view>
+                    </view>
+                </block>
+                <view wx:else class="empty-integral">暂无积分记录</view>
             </view>
         </view>
 

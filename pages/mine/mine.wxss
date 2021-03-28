@@ -100,15 +100,22 @@ page {
 }
 .f-date {
   color: #999;
+  width: 200rpx;
 }
 .f-text {
   flex: 1;
-  padding-left: 40rpx;
+  padding-left: 20rpx;
   color: #999;
 }
 .f-num {
   padding-left: 10rpx;
   font-size: var(--fontSize-xl);
+}
+.empty-integral {
+  padding: 50rpx 0;
+  text-align: center;
+  color: #999;
+
 }
 
 

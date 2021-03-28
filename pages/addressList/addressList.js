@@ -19,23 +19,30 @@ create.Page(store, {
   },
 
   onShow() {
-    // this.getAddressList()
+    this.getAddressList()
   },
 
   async getAddressList() {
-    const addressList = userApi.getAddressList({});
-    this.setData({addressList});
+    const addressList = await userApi.getAddressList({
+      userId: this.store.data.userInfo.userId
+    });
+    this.setData({addressList : addressList || []});
   },
 
   async handleDefault(e) {
-    const r = await userApi.setDefaultAddress({});
-    this.getAddressList();
+    const r = await userApi.editAddress({
+      ...this.data.addressList[e.currentTarget.dataset.index],
+      isDefault: '1'
+    });
+    r && this.getAddressList();
   },
 
   handleEdit(e) {
-    console.log(e);
     const {item} = e.currentTarget.dataset;
-    this.store.data.editingAddress = {name: '名称', phone: '3443', address:'dfsdfd'};
+    this.store.data.editingAddress = {
+      ...item,
+      region: item.addressProvince + item.addressCity + item.addressArea
+    };
     wxUtils.backOrNavigate("/pages/addressEdit/addressEdit?type=edit")
   },
 
@@ -44,18 +51,21 @@ create.Page(store, {
   },
 
   handleRemove(e) {
-    const {id} = e.currentTarget.dataset;
+    const {id, index} = e.currentTarget.dataset;
     Tips.confirm({
       content: '确定删除该地址吗？'
     }).then(r => {
-      console.log(9)
+      userApi.removeAddress({id}).then(r => {
+        r && Tips.success('删除成功');
+        r && this.getAddressList();
+      })
     }).catch(_ => {})
   },
 
   handleChoose(e) {
-    console.log(this.data)
     if (this.data.type === 'choose') {
-      wxUtils.backOrNavigate('/pages/orderConfirm/orderConfirm')
+      this.store.data.confirmAddress = e.currentTarget.dataset.item;
+      wxUtils.backOrNavigate('/pages/orderConfirm/orderConfirm');
     }
   }
 

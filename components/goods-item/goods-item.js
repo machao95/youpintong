@@ -12,8 +12,12 @@ Component({
   methods: {
     handleDetail() {
       if (!this.data.showNum) {
-        wxUtils.backOrNavigate(`/pages/goodsDetail/goodsDetail?id=${Math.random()}`)
+        wxUtils.backOrNavigate(`/pages/goodsDetail/goodsDetail?id=${this.data.detail.id}`)
       }
+    },
+
+    handleNumChange(e)  {
+      this.triggerEvent('changeNumber', {value: e.detail, id: this.data.detail.id})
     }
   }
 

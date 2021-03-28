@@ -1,7 +1,7 @@
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="container">
 
-  <view class="title">{{detail.articleTitle}}}</view>
+  <view class="title">{{detail.articleTitle}}</view>
 
   <view class="desc">来源：{{detail.articleSource}} | {{detail.createTime}}</view>
 

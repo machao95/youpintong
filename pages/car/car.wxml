@@ -1,5 +1,5 @@
-
-<view class="panel">
+<import src='../../templates/empty/empty.wxml' />
+<view class="panel" wx:if="{{$.cart.length}}">
 
   <view class="panel-header row-end">
     <view class="op" wx:if="{{manageMode}}"bind:tap="triggerManage">完成</view>
@@ -8,10 +8,10 @@
 
   <view class="panel-body">
 
-    <view class="goods-item row-between" wx:for="{{goodsList}}" wx:key="id">
-      <radio class="check" color="#ff6b6b" value="{{item.id}}" checked="{{checkedObj[item.id]}}"/>
+    <view class="goods-item row-between" wx:for="{{$.cart}}" wx:key="id">
+      <radio class="check" color="#ff6b6b" value="{{item.id}}" data-index="{{index}}" checked="{{item.checked}}" bind:tap="handleCheck"/>
       <view style="flex: 1">
-        <goods-item showNumStep></goods-item>
+        <goods-item showNumStep detail="{{item}}" bind:changeNumber="handleChangeNumber"></goods-item>
       </view>
     </view>
 
@@ -19,34 +19,36 @@
 
 </view>
 
-<view class="other-title-box row-center">
-  <view class="title-line"></view>
-  <view class="other-title">猜你喜欢</view>
-  <view class="title-line"></view>
-</view>
+<template is="empty" wx:else data="{{emptyTip: '购物车空空如也，快去添加吧'}}"></template>
 
-<view class="panel">
+<!--<view class="other-title-box row-center">-->
+<!--  <view class="title-line"></view>-->
+<!--  <view class="other-title">猜你喜欢</view>-->
+<!--  <view class="title-line"></view>-->
+<!--</view>-->
 
-  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>
+<!--<view class="panel">-->
 
-  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>
+<!--  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>-->
 
-  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>
+<!--  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>-->
 
-  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>
+<!--  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img525217678d7eae8.jpg"></image>-->
 
-</view>
+<!--  <image class="guess-image" src="https://img.xiaopiu.com/userImages/img57131767994da18.jpg"></image>-->
 
-<view class="footer-box">
+<!--</view>-->
+
+<view class="footer-box" wx:if="{{$.cart.length}}">
   <view class="footer">
     <view class="row-between">
       <view>
-        <radio color="#ff6b6b" value="all" checked="{{checkedAll}}"/> 全选
+        <radio color="#ff6b6b" value="all" checked="{{checkedAll}}" bind:tap="handleCheckAll"/> 全选
       </view>
       <view class="btn btn-remove" wx:if="{{manageMode}}" bind:tap="handleRemove" >删除</view>
       <view class="row" wx:else>
-        <view class="total">合计：<text class="price">￥99.8</text></view>
-        <view class="btn btn-pay">结算</view>
+        <view class="total">合计：<text class="price">￥{{totalPrice}}</text></view>
+        <view class="btn btn-pay" bind:tap="handleSubmit">结算</view>
       </view>
     </view>
   </view>

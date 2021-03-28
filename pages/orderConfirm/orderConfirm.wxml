@@ -1,25 +1,28 @@
 
 
-<view class="a-body row" bind:tap="changeAddress">
-    <view class="a-image">马</view>
+<view class="a-body row" bind:tap="changeAddress" wx:if="{{$.confirmAddress}}">
+    <view class="a-image">{{$.confirmAddress.addressUser[0]}}</view>
     <view class="column a-content">
         <view class="row-between">
             <view class="row">
-                <view class="a-name">马超</view>
-                <view class="a-phone">15777100748</view>
+                <view class="a-name">{{$.confirmAddress.addressUser}}</view>
+                <view class="a-phone">{{$.confirmAddress.mobile}}</view>
             </view>
             <van-icon name="arrow" color="#696969"></van-icon>
         </view>
-        <view class="a-detail">东北那嘎达</view>
+        <view class="a-detail">{{$.confirmAddress.addressProvince + $.confirmAddress.addressCity + $.confirmAddress.addressArea + $.confirmAddress.addressDetail}}</view>
     </view>
+</view>
+
+<view wx:else class="row-between" bind:tap="changeAddress">
+    <view>选择收货地址</view>
+    <van-icon name="arrow" color="#696969"></van-icon>
 </view>
 
 
 <view class="content">
 
-    <goods-item data="{{detail}}" showNum></goods-item>
-
-    <goods-item data="{{detail}}" showNum></goods-item>
+    <goods-item wx:for="{{$.confirmOrderGoods}}" wx:key="id" detail="{{item}}" showNum></goods-item>
 
     <view class="items-box">
 
@@ -46,15 +49,16 @@
 
         <view class="item row-between" style="align-items: start">
             <view class="name">订单备注</view>
-            <textarea class="input-remark" placeholder="请输入备注" />
+            <textarea class="input-remark" placeholder="请输入备注" bind:input="changeRemark" />
         </view>
 
     </view>
 
     <view class="row-end">
-        <text>共 2 件，</text>
+        <text>共 {{$.confirmOrderGoods.length}} 件，</text>
         <text>小计：</text>
-        <text class="price">￥29.1</text>
+        <text class="price" wx:if="{{goodsType === 'normal'}}">￥ {{total}}</text>
+        <text class="price" wx:if="{{goodsType === 'integral'}}">{{total}} 分</text>
     </view>
 
 
@@ -62,8 +66,12 @@
 
 <view class="footer-box">
     <view class="footer row-end">
-        <view class="desc">共 2 件，合计 <text class="price">￥29.1</text></view>
+        <view class="desc">
+            共 {{$.confirmOrderGoods.length}} 件，合计
+            <text class="price" wx:if="{{goodsType === 'normal'}}">￥ {{total}}</text>
+            <text class="price" wx:if="{{goodsType === 'integral'}}">{{total}} 分</text>
+        </view>
         <view class="btn cancel" bind:tap="cancelOrder">取消订单</view>
-        <view class="btn submit">提交订单</view>
+        <view class="btn submit" bind:tap="handleSubmit">提交订单</view>
     </view>
 </view>

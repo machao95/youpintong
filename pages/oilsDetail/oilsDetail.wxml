@@ -1,8 +1,8 @@
-
+<import src="../../wxParse/wxParse.wxml"/>
 <view class="container">
-  <view class="address">浙江省杭州市萧山区快乐老家化工厂</view>
-  <oils-item showAddress="{{false}}" />
+  <view class="address">{{$.oilData.oilAddress}}</view>
+  <oils-item detail="{{$.oilData}}" showAddress="{{false}}" />
   <view class="detail">
-    <image mode="widthFix" src="https://img.xiaopiu.com/userImages/img4581784dbd58f0.png"></image>
+    <template is="wxParse" data="{{wxParseData: content.nodes}}"/>
   </view>
 </view>

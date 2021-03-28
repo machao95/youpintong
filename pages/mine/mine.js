@@ -3,16 +3,26 @@ import store from '../../store/index'
 import wxUtils from '../../utils/wxUtils';
 import Tips from '../../utils/tips';
 import userApi from '../../api/userApi'
+import newsApi from "../../api/newsApi";
+import goodsApi from '../../api/goodsApi';
 
 const regeneratorRuntime = require('../../libs/runtime.js');
 create.Page(store, {
   use: ['userInfo', 'token'],
   data: {
-    canIUseGetUserProfile: false
+    canIUseGetUserProfile: false,
+    goodsCollectCount: 0, // 商品收藏数量
+    articleCollectCount: 0, // 文章收藏数量
+    articleUpCount: 0, // 文章点赞数量
+    integralRecord: [], // 积分记录
   },
 
   onShow() {
-    this.setData({userInfo: this.store.data.userInfo})
+    if (this.store.data.token) {
+      this.getCollectUpNum();
+      this.getIntegralRecord();
+      this.getUserIntegral()
+    }
   },
 
   onLoad(options) {
@@ -49,7 +59,8 @@ create.Page(store, {
         ...this.store.data.userInfo,
         ...userInfo,
         openId: data.openId,
-        userId: data.user ? data.user.id : null
+        userId: data.user ? data.user.id : null,
+        integral: data.user ? data.user.integral : 0
       };
       // 更新用户
       if (!data.user) {
@@ -62,12 +73,44 @@ create.Page(store, {
         const userInfoInDb = await userApi.getUserDetail({
           openId: data.openId
         });
-        userInfoInDb && (user.userId = userInfoInDb.id)
+        if (userInfoInDb) {
+          user.userId = userInfoInDb.id;
+          user.integral = userInfoInDb.integral;
+        }
       }
       this.store.data.userInfo = user;
       wx.setStorageSync('userInfo', user);
+      this.getCollectUpNum();
+      this.getIntegralRecord();
     }
   },
+
+  async getCollectUpNum() {
+    const userId = this.store.data.userInfo.userId;
+    const numObj = await userApi.getNumberStatistics({userId});
+    numObj && this.setData(numObj);
+  },
+
+  async getIntegralRecord() {
+    const userId = this.store.data.userInfo.userId;
+    const data = await userApi.getIntegralRecord({
+      userId,
+      page: 1,
+      pageSize: 2
+    });
+    data && this.setData({integralRecord: data.data || []});
+  },
+
+  async getUserIntegral() {
+    const {userId, openId} = this.store.data.userInfo;
+    const data = await userApi.getUserDetail({
+      userId,
+      openId
+    });
+    this.store.data.userInfo.integral = data.integral;
+    wx.setStorageSync('userInfo', this.store.data.userInfo)
+  },
+
 
   toGoodsCollection() {
     wxUtils.backOrNavigate('/pages/goodsCollection/goodsCollection')
@@ -81,8 +124,14 @@ create.Page(store, {
     wxUtils.backOrNavigate('/pages/newsThumbs/newsThumbs')
   },
 
+  // 积分
   toGradeRecord() {
-    wxUtils.backOrNavigate('/pages/gradeRecord/gradeRecord')
+    this.data.integralRecord.length && wxUtils.backOrNavigate('/pages/integralRecord/integralRecord')
+  },
+
+  // 积分商城
+  toIntegralGoods() {
+    wxUtils.backOrNavigate('/pages/integralGoods/integralGoods')
   },
 
   toAddress() {

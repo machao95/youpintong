@@ -59,7 +59,8 @@
   text-align: right;
   vertical-align: middle;
   color: #969799;
-  color: var(--cell-value-color, #969799)
+  color: var(--cell-value-color, #969799);
+  width: 100%;
 }
 
 /* , .van-cell__value */

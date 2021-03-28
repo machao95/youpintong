@@ -1,0 +1,25 @@
+
+<view class="container">
+
+  <view class="f-box row">
+    <view class="title">当前用户积分</view>
+    <view>
+      <text class="f-num">{{$.userInfo.integral || 0}}</text>
+      <text class="f-text">分</text>
+    </view>
+  </view>
+
+  <view class="goods-box">
+    <view class="goods-item row-between" wx:for="{{goodsList}}" wx:key="id">
+      <image class="goods-image" src="{{item.goodsImg}}" bind:tap="handleDetail" data-item="{{item}}"></image>
+      <view class="goods-content column" bind:tap="handleDetail" data-item="{{item}}">
+        <view class="goods-title">{{item.goodsName}}</view>
+        <view class="goods-integral">{{item.goodsIntegral}} 分 <text class="hot">hot</text></view>
+      </view>
+      <view class="goods-right column-center">
+        <view class="btn" bind:tap="handleExchange" data-item="{{item}}">立即兑换</view>
+      </view>
+    </view>
+  </view>
+
+</view>

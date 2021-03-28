@@ -1,0 +1,12 @@
+
+
+<view class="container">
+  <view class="f-item " wx:for="{{list}}" wx:key="id">
+    <view class="row-between">
+      <view class="f-text ellipsis">{{item.integralTypeName}}</view>
+      <view class="f-num">+{{item.integralNum}}分</view>
+    </view>
+    <view class="f-date">{{item.createTime}}</view>
+  </view>
+
+</view>

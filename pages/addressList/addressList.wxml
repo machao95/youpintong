@@ -1,57 +1,31 @@
 
 <view class="list">
 
-    <view class="a-item">
+    <view class="a-item" wx:for="{{addressList}}" wx:key="id">
 
-        <view class="a-body row" bind:tap="handleChoose">
-            <view class="a-image">马</view>
+        <view class="a-body row" bind:tap="handleChoose" data-item="{{item}}">
+            <view class="a-image">{{item.addressUser[0]}}</view>
             <view class="column a-content">
                 <view class="row">
-                    <view class="a-name">马超</view>
-                    <view class="a-phone">15777100748</view>
+                    <view class="a-name">{{item.addressUser}}</view>
+                    <view class="a-phone">{{item.mobile}}</view>
                 </view>
-                <view class="a-detail">东北那嘎达</view>
+                <view class="a-detail">{{item.addressProvince + item.addressCity + item.addressArea + item.addressDetail}}</view>
             </view>
         </view>
 
         <view class="a-footer row-between">
-            <view class="row" wx:if="{{addressList}}">
+            <view class="row" wx:if="{{item.isDefault === '1'}}">
                 <van-icon name="success" color="green" />
                 <view class="a-default-text is-default">默认</view>
             </view>
-            <view class="row" wx:else bind:tap="handleDefault" data-id="9">
+            <view class="row" wx:else bind:tap="handleDefault" data-index="{{index}}">
                 <van-icon name="circle" color="#999" />
                 <view class="a-default-text">设为默认地址</view>
             </view>
             <view class="a-op row-between">
-                <view class="a-edit" bind:tap="handleEdit" data-item="9">编辑</view>
-                <view class="a-delete" bind:tap="handleRemove" data-id="9">删除</view>
-            </view>
-        </view>
-
-    </view>
-
-    <view class="a-item">
-
-        <view class="a-body row">
-            <view class="a-image">马</view>
-            <view class="column a-content">
-                <view class="row">
-                    <view class="a-name">马超</view>
-                    <view class="a-phone">15777100748</view>
-                </view>
-                <view class="a-detail">东北那嘎达</view>
-            </view>
-        </view>
-
-        <view class="a-footer row-between">
-            <view class="row" bind:tap="handleDefault" data-id="9">
-                <van-icon name="circle" color="#999" />
-                <view class="a-default-text">设为默认地址</view>
-            </view>
-            <view class="a-op row-between">
-                <view class="a-edit">编辑</view>
-                <view class="a-delete">删除</view>
+                <view class="a-edit" bind:tap="handleEdit" data-item="{{item}}">编辑</view>
+<!--                <view class="a-delete" bind:tap="handleRemove" data-id="{{item.id}}">删除</view>-->
             </view>
         </view>
 

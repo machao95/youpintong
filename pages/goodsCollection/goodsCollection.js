@@ -11,17 +11,19 @@ create.Page(store, {
 
   data: {
     userInfo: {},
-    goodsList: [{id: 0}, {id: 3}, {id: 9}, {id: 90}]
+    goodsList: []
   },
 
   onShow() {
-    // this.getGoodsList()
+    this.getGoodsList()
   },
 
   async getGoodsList() {
-    const goodsList = goodsApi.getCollection({});
+    const goodsList = await goodsApi.getCollection({
+      userId: this.store.data.userInfo.userId
+    });
     console.log(goodsList)
-    this.setData({goodsList});
+    this.setData({goodsList: goodsList || []});
   },
 
   handleDetail(e) {

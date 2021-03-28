@@ -3,7 +3,7 @@
 <view wx:if="{{goodsList.length >= 0}}"  class="list">
     <block>
 
-        <goods-item wx:for="{{goodsList}}" wx:key="id" showNum="{{false}}" style="border-bottom: 1px solid #999"></goods-item>
+        <goods-item wx:for="{{goodsList}}" wx:key="id" showNum="{{false}}" style="border-bottom: 1px solid #999" detail="{{item}}"></goods-item>
 
     </block>
 </view>

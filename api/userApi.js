@@ -10,15 +10,38 @@ const app = getApp();
 
 module.exports = {
 
-  //
-  async getAddressList() {
-    return []
+  // 收货地址
+  async getAddressList(params) {
+    Tips.loading();
+    const data = await request.get('user/address/info/list', params);
+    Tips.loaded();
+    return data
   },
 
-  //
-  async setDefaultAddress(data) {
-    return false;
+  // 添加地址
+  async addAddress(params) {
+    Tips.loading('正在提交');
+    const data = await request.post('user/address/info/save', params);
+    Tips.loaded();
+    return data
   },
+
+  // 修改地址
+  async editAddress(params) {
+    Tips.loading('正在提交');
+    const data = await request.post('user/address/info/update', params);
+    Tips.loaded();
+    return data
+  },
+
+  // 删除地址
+  async removeAddress(params) {
+    Tips.loading('正在删除');
+    const data = await request.post('user/address/info/remove', params);
+    Tips.loaded();
+    return data
+  },
+
 
   // 登录
   async login(params) {
@@ -28,13 +51,13 @@ module.exports = {
     return data
   },
 
-  // 更新用户
+  // 更新用户信息
   async updateUser(params) {
     const data = await request.post('auth/updateUser', params);
     return data
   },
 
-  //
+  // 获取用户详情
   async getUserDetail(params) {
     Tips.loading('获取用户信息');
     const data = await request.get('auth/getUserInfo', params);
@@ -42,57 +65,57 @@ module.exports = {
     return data
   },
 
-  async getUserInfo(params) {
-    Tips.loading('获取用户信息');
-    const res = await request.get('auth/decode_userinfo', params);
+  // 提交反馈
+  async feedBack(params) {
+    Tips.loading('正在提交');
+    const data = await request.post('opinion/info/save', params);
     Tips.loaded();
-    // const {success, errMsg} = ToOperationResult(res, {}, ["0", "-1002", "-1003"]);
-    console.log(res, '1');
-    // if (!success) Tips.info({title: '错误', content: errMsg});
-    return res.data
+    return data
   },
 
-  // 登出
-  async logout(data) {
-    Tips.loading('正在退出');
-    // const res = await request.post('Member/Login', data);
-    const res = await mock({errcode: "0"});
+  // 收藏点赞数量
+  async getNumberStatistics(params) {
+    Tips.loading();
+    const data = await request.get('like/info/statistics', params);
     Tips.loaded();
-    return ToOperationResult(res);
+    return data
   },
 
-  // 获取验证码
-  async getValidateNum(data) {
-    Tips.loading('正在发送验证码');
-    const res = await request.get('Verfrication/SendCode', data);
+  // 添加点赞收藏
+  async saveCollectUp(params) {
+    Tips.loading();
+    const data = await request.post('like/info/save', params);
     Tips.loaded();
-    const {success, errMsg} = ToOperationResult(res, {});
-    !success && Tips.info({title: '错误', content: errMsg});
-    return success;
+    return data
   },
 
-  // 提交绑定手机号，验证手机号
-  async bindPhone(data) {
-    const res = await request.post('Verfrication/VerfricationCode', data);
-    return ToOperationResult(res, {}, ["0", "-1000"]);
+  // 取消点赞收藏
+  async cancelCollectUp(params) {
+    Tips.loading();
+    const data = await request.post('like/info/cancel', params);
+    Tips.loaded();
+    return data
   },
 
-  // 绑定姓名身份证号码
-  async bindName(data) {
-    const res = await request.post('Verfrication/VerfricationIdentity', data);
-    return ToOperationResult(res, {});
+  // 点赞收藏是否存在
+  async exitCollectUp(params) {
+    Tips.loading();
+    const data = await request.get('like/info/exist', params);
+    Tips.loaded();
+    return data
   },
 
-  // 单选投票
-  async voteRadio(data) {
-    const res = await request.post('Vote/VoteSetChoice', data);
-    return ToOperationResult(res, {})
-  },
-
-  // 问答投票
-  async voteText(data) {
-    const res = await request.post('Vote/VoteSetSubject', data);
-    return ToOperationResult(res, {})
+  // 积分明细记录
+  async getIntegralRecord(params) {
+    Tips.loading();
+    const data = await request.get('user/integral/info/page', params);
+    Tips.loaded();
+    if (data && data.data) {
+      data.data.forEach(item => {
+        item.createTime = formatDate(new Date(item.createTime), 'YYYY-MM-DD')
+      })
+    }
+    return data
   },
 
 };

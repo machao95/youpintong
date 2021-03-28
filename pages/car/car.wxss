@@ -1,4 +1,4 @@
-
+@import '../../templates/empty/empty.wxss';
 page {
   background: var(--color-bg-gray);
 }

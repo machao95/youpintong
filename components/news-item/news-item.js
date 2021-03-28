@@ -2,6 +2,7 @@ import wxUtils from '../../utils/wxUtils';
 Component({
   properties: {
     type: {type: String, value: 'normal'}, // normal or first
+    showOp: {type: Boolean, value: true},
     detail: {type: Object, value: {} }
   },
   data: {

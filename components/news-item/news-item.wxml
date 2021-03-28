@@ -14,7 +14,7 @@
 
     </view>
 
-    <view class="news-footer row-between">
+    <view class="news-footer row-between" wx:if="{{showOp}}">
 
         <view class="news-op row-between" bind:tap="handleCollect">
             <van-icon name="star" size="1em" color="#E6A23C" wx:if="{{detail.collect}}" />
@@ -42,7 +42,7 @@
         <image class="first-image" src="{{detail.articleImg}}"></image>
         <view class="first-desc">{{detail.createTime}} | 来源：{{detail.articleSource}}</view>
     </view>
-    <view class="news-footer row-between">
+    <view class="news-footer row-between" wx:if="{{showOp}}">
 
         <view class="news-op row-between" bind:tap="handleCollect">
             <van-icon name="star" size="1em" color="#E6A23C" wx:if="{{detail.collect}}" />
