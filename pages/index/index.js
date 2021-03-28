@@ -88,6 +88,7 @@ create.Page(store, {
     this.store.data.city = city;
     wx.setStorageSync('city', city);
     this.getCityWeather(city.name);
+    this.getOilInfoList();
   },
 
   startNoticeScroll() {
